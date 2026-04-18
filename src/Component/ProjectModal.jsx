@@ -1,33 +1,30 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeModal } from '../store/store';
 
 export default function ProjectModal() {
   const dispatch = useDispatch();
   const { selectedProject } = useSelector((state) => state.ui);
-  
-  // useRef - 모달 컨텐츠 참조 (외부 클릭 감지)
   const modalRef = useRef(null);
   const contentRef = useRef(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // ESC 키로 모달 닫기
   useEffect(() => {
     const handleEsc = (e) => {
-      if (e.key === 'Escape') {
-        dispatch(closeModal());
-      }
+      if (e.key === 'Escape') dispatch(closeModal());
     };
-
     document.addEventListener('keydown', handleEsc);
     document.body.style.overflow = 'hidden';
-
     return () => {
       document.removeEventListener('keydown', handleEsc);
       document.body.style.overflow = 'unset';
     };
   }, [dispatch]);
 
-  // 모달 외부 클릭 시 닫기
+  useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [selectedProject]);
+
   const handleBackdropClick = (e) => {
     if (contentRef.current && !contentRef.current.contains(e.target)) {
       dispatch(closeModal());
@@ -36,27 +33,20 @@ export default function ProjectModal() {
 
   if (!selectedProject) return null;
 
+  const images = selectedProject.images || [];
+  const links = selectedProject.links || [];
+
   return (
-    <div 
-      ref={modalRef} 
-      className="modal-backdrop"
-      onClick={handleBackdropClick}
-    >
+    <div ref={modalRef} className="modal-backdrop" onClick={handleBackdropClick}>
       <div ref={contentRef} className="modal-content">
         {/* Modal Header */}
         <div className="modal-header">
           <div className="modal-title-section">
             <span className="modal-category">{selectedProject.category.toUpperCase()}</span>
             <h2>{selectedProject.title}</h2>
-            <p className="modal-meta">
-              {selectedProject.period} · {selectedProject.role}
-            </p>
+            <p className="modal-meta">{selectedProject.period} · {selectedProject.role}</p>
           </div>
-          <button 
-            className="modal-close"
-            onClick={() => dispatch(closeModal())}
-            aria-label="Close modal"
-          >
+          <button className="modal-close" onClick={() => dispatch(closeModal())} aria-label="Close modal">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="18" y1="6" x2="6" y2="18"/>
               <line x1="6" y1="6" x2="18" y2="18"/>
@@ -64,9 +54,35 @@ export default function ProjectModal() {
           </button>
         </div>
 
-        {/* Modal Body */}
         <div className="modal-body">
-          {/* Summary */}
+          {/* 이미지 갤러리 */}
+          {images.length > 0 && (
+            <section className="modal-section modal-gallery">
+              <div className="gallery-main">
+                <img
+                  src={images[currentImageIndex]}
+                  alt={`${selectedProject.title} ${currentImageIndex + 1}`}
+                  onError={(e) => { e.target.style.display = 'none'; }}
+                />
+              </div>
+              {images.length > 1 && (
+                <div className="gallery-thumbnails">
+                  {images.map((img, idx) => (
+                    <img
+                      key={idx}
+                      src={img}
+                      alt={`thumbnail ${idx + 1}`}
+                      className={`gallery-thumb ${idx === currentImageIndex ? 'active' : ''}`}
+                      onClick={() => setCurrentImageIndex(idx)}
+                      onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                  ))}
+                </div>
+              )}
+            </section>
+          )}
+
+          {/* Summary + Tags */}
           <section className="modal-section">
             <p className="project-description">{selectedProject.summary}</p>
             <div className="modal-tags">
@@ -76,7 +92,32 @@ export default function ProjectModal() {
             </div>
           </section>
 
-          {/* Background */}
+          {/* 링크 */}
+          {links.length > 0 && (
+            <section className="modal-section modal-links">
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                </svg>
+                관련 링크
+              </h3>
+              <div className="links-grid">
+                {links.map((link, idx) => (
+                  <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="project-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                      <polyline points="15 3 21 3 21 9"/>
+                      <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* 배경 */}
           <section className="modal-section">
             <h3>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -89,7 +130,7 @@ export default function ProjectModal() {
             <p>{selectedProject.background}</p>
           </section>
 
-          {/* Features */}
+          {/* 주요 기능 */}
           <section className="modal-section">
             <h3>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -107,7 +148,7 @@ export default function ProjectModal() {
             </div>
           </section>
 
-          {/* My Role */}
+          {/* 나의 역할 */}
           <section className="modal-section">
             <h3>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -123,7 +164,7 @@ export default function ProjectModal() {
             </ul>
           </section>
 
-          {/* Challenge */}
+          {/* 도전과 해결 */}
           <section className="modal-section challenge-section">
             <h3>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -147,12 +188,11 @@ export default function ProjectModal() {
             </div>
           </section>
 
-          {/* Achievements */}
+          {/* 성과 */}
           <section className="modal-section">
             <h3>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 15l-2 5l9-9l-9-9l2 5"/>
-                <circle cx="12" cy="12" r="10"/>
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
               </svg>
               성과 및 배운 점
             </h3>

@@ -120,6 +120,8 @@ export function About() {
                   현장 관찰과 데이터를 통해 진짜 문제를 정의하고,
                   가설을 세운 뒤 검증하는 과정을 반복합니다.
                 </p>
+               </div>
+
 
               <div className="value-card">
                 <div className="value-icon">

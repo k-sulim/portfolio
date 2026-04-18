@@ -2331,36 +2331,131 @@ footer {
   transform: translateY(0) !important;
 }
 
-/* 프로젝트 카드 이미지 스타일 - App.css에서 기존 이미지 스타일 부분을 교체하세요 */
+/* ====================================
+   프로젝트 카드 이미지 - 기존 스타일 교체
+   ==================================== */
 
 .project-card-image {
   width: 100%;
   overflow: hidden;
   border-radius: 8px 8px 0 0;
-  background: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #f5f5f5;
+  position: relative;
 }
 
 .project-card-image img {
   width: 100%;
   height: auto;
-  max-height: 480px;
-  object-fit: contain;
+  max-height: 320px;
+  object-fit: cover;
   object-position: top;
-  transition: transform 0.3s ease;
   display: block;
+  transition: transform 0.3s ease;
 }
 
 .project-card:hover .project-card-image img {
   transform: scale(1.02);
 }
 
+.image-count {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
 .project-card-body {
   padding: 1.2rem;
 }
 
-.project-card.featured .project-card-image img {
-  max-height: 520px;
+/* ====================================
+   모달 갤러리
+   ==================================== */
+
+.modal-gallery {
+  margin-bottom: 1.5rem;
+}
+
+.gallery-main {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f5f5f5;
+  margin-bottom: 0.5rem;
+}
+
+.gallery-main img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  display: block;
+}
+
+.gallery-thumbnails {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.gallery-thumb {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  border: 2px solid transparent;
+  flex-shrink: 0;
+}
+
+.gallery-thumb.active,
+.gallery-thumb:hover {
+  opacity: 1;
+  border-color: var(--accent, #22c55e);
+}
+
+/* ====================================
+   모달 링크
+   ==================================== */
+
+.modal-links h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid currentColor;
+  border-radius: 20px;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.project-link:hover {
+  background: currentColor;
+}
+
+.project-link:hover span,
+.project-link:hover svg {
+  color: white;
 }

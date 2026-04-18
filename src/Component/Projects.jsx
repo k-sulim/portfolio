@@ -1,4 +1,4 @@
-import { useMemo, useRef, useEffect } from 'react';
+import { useMemo, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter, setSearchQuery, openModal } from '../store/store';
 import { useProjects } from '../hooks/useApi';
@@ -64,6 +64,53 @@ export default function Projects() {
     );
   }
 
+  const ProjectCard = ({ project, featured }) => (
+    <article
+      className={`project-card ${featured ? 'featured' : ''}`}
+      onClick={() => handleProjectClick(project)}
+    >
+      {/* 이미지 — 첫 번째 이미지만 카드에 표시 */}
+      {project.images && project.images.length > 0 && (
+        <div className="project-card-image">
+          <img
+            src={project.images[0]}
+            alt={project.title}
+            onError={(e) => { e.target.style.display = 'none'; }}
+          />
+          {project.images.length > 1 && (
+            <span className="image-count">+{project.images.length - 1}</span>
+          )}
+        </div>
+      )}
+      <div className="project-card-body">
+        <div className="project-card-header">
+          <span className="project-category">{project.category.toUpperCase()}</span>
+          <span className="project-period">{project.period}</span>
+        </div>
+        <h3 className="project-title">{project.title}</h3>
+        <p className="project-role">{project.role}</p>
+        <p className="project-summary">{project.summary}</p>
+        <div className="project-tags">
+          {project.tags.slice(0, featured ? 4 : 3).map((tag, idx) => (
+            <span key={idx} className="tag">{tag}</span>
+          ))}
+          {project.tags.length > (featured ? 4 : 3) && (
+            <span className="tag more">+{project.tags.length - (featured ? 4 : 3)}</span>
+          )}
+        </div>
+        <div className="project-card-footer">
+          <span className="view-detail">
+            자세히 보기
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </article>
+  );
+
   return (
     <div className="projects-page">
       <div className="container">
@@ -87,7 +134,6 @@ export default function Projects() {
               </button>
             ))}
           </div>
-
           <div className="search-box">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="11" cy="11" r="8"/>
@@ -115,7 +161,6 @@ export default function Projects() {
           <p>{filteredProjects.length === 0 ? '검색 결과가 없습니다.' : `${filteredProjects.length}개의 프로젝트`}</p>
         </div>
 
-        {/* Featured Projects */}
         {featuredProjects.length > 0 && (
           <section className="featured-section">
             <h2 className="section-title">
@@ -124,103 +169,18 @@ export default function Projects() {
             </h2>
             <div className="featured-projects-grid">
               {featuredProjects.map((project) => (
-                <article
-                  key={project.id}
-                  className="project-card featured"
-                  onClick={() => handleProjectClick(project)}
-                >
-                  {/* 프로젝트 이미지 */}
-                  {project.image && (
-                    <div className="project-card-image">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        onError={(e) => { e.target.style.display = 'none'; }}
-                      />
-                    </div>
-                  )}
-                  <div className="project-card-body">
-                    <div className="project-card-header">
-                      <span className="project-category">{project.category.toUpperCase()}</span>
-                      <span className="project-period">{project.period}</span>
-                    </div>
-                    <h3 className="project-title">{project.title}</h3>
-                    <p className="project-role">{project.role}</p>
-                    <p className="project-summary">{project.summary}</p>
-                    <div className="project-tags">
-                      {project.tags.slice(0, 4).map((tag, idx) => (
-                        <span key={idx} className="tag">{tag}</span>
-                      ))}
-                      {project.tags.length > 4 && (
-                        <span className="tag more">+{project.tags.length - 4}</span>
-                      )}
-                    </div>
-                    <div className="project-card-footer">
-                      <span className="view-detail">
-                        자세히 보기
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <line x1="5" y1="12" x2="19" y2="12"/>
-                          <polyline points="12 5 19 12 12 19"/>
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </article>
+                <ProjectCard key={project.id} project={project} featured={true} />
               ))}
             </div>
           </section>
         )}
 
-        {/* Regular Projects */}
         {regularProjects.length > 0 && (
           <section className="regular-section">
-            {featuredProjects.length > 0 && (
-              <h2 className="section-title">Other Projects</h2>
-            )}
+            {featuredProjects.length > 0 && <h2 className="section-title">Other Projects</h2>}
             <div className="projects-grid">
               {regularProjects.map((project) => (
-                <article
-                  key={project.id}
-                  className="project-card"
-                  onClick={() => handleProjectClick(project)}
-                >
-                  {/* 프로젝트 이미지 */}
-                  {project.image && (
-                    <div className="project-card-image">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        onError={(e) => { e.target.style.display = 'none'; }}
-                      />
-                    </div>
-                  )}
-                  <div className="project-card-body">
-                    <div className="project-card-header">
-                      <span className="project-category">{project.category.toUpperCase()}</span>
-                      <span className="project-period">{project.period}</span>
-                    </div>
-                    <h3 className="project-title">{project.title}</h3>
-                    <p className="project-role">{project.role}</p>
-                    <p className="project-summary">{project.summary}</p>
-                    <div className="project-tags">
-                      {project.tags.slice(0, 3).map((tag, idx) => (
-                        <span key={idx} className="tag">{tag}</span>
-                      ))}
-                      {project.tags.length > 3 && (
-                        <span className="tag more">+{project.tags.length - 3}</span>
-                      )}
-                    </div>
-                    <div className="project-card-footer">
-                      <span className="view-detail">
-                        자세히 보기
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <line x1="5" y1="12" x2="19" y2="12"/>
-                          <polyline points="12 5 19 12 12 19"/>
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </article>
+                <ProjectCard key={project.id} project={project} featured={false} />
               ))}
             </div>
           </section>

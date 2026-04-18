@@ -16,7 +16,14 @@ const PROJECTS_DATA = [
     period: "2024.09 – 2024.12",
     role: "팀장 · 백엔드 개발 · 기획 리드",
     summary: "독거노인과 반려동물 보호자, 두 사용자군의 불안을 하나의 서비스로 해결하는 AI CCTV 케어 플랫폼",
-    image: "/portfolio/images/icatch.webp",
+    images: [
+      "/portfolio/images/icatch.webp",
+      "/portfolio/images/icatch2.webp",
+    ],
+    links: [
+      { label: "Figma 화면 설계", url: "https://www.figma.com/design/U7q3BFl7Cwp1FX2dVc5W2J/Untitled?node-id=0-1&p=f" },
+      { label: "ERD 설계", url: "https://www.erdcloud.com/d/E9X8bDBY7BEFeSCuo" },
+    ],
     tags: ["Java", "Spring Boot", "React", "IoT", "AI", "ERD 설계"],
     background: "독거노인과 반려동물을 혼자 두고 외출하는 보호자가 실시간으로 상태를 확인할 수 없다는 문제를 정의했습니다. 두 사용자군의 불안 포인트를 각각 분석해 하나의 플랫폼으로 해결하는 서비스를 기획하고 팀장으로 프로젝트를 이끌었습니다.",
     features: [
@@ -53,7 +60,13 @@ const PROJECTS_DATA = [
     period: "2024.09 – 2024.12",
     role: "아이디어 기획 · 백엔드/프론트 연결 담당",
     summary: "교내 주차 문제를 현장 관찰로 발견하고, YOLO AI와 Raspberry Pi로 실시간 주차 현황을 안내하는 시스템",
-    image: "/portfolio/images/parking.jpg",
+    images: [
+      "/portfolio/images/parking.jpg",
+      "/portfolio/images/parking2.jpg",
+    ],
+    links: [
+      { label: "GitHub", url: "https://github.com/Xzar79/MuhanParking" },
+    ],
     tags: ["YOLO", "Raspberry Pi", "Python", "Spring Boot", "React", "IoT"],
     background: "교내 주차장 만차 여부를 운전자가 직접 확인해야 해서 불필요한 순환 운전이 반복되는 문제를 직접 경험하고 발견했습니다. 카메라와 AI로 실시간 주차 현황을 감지해 앱으로 안내하면 해결할 수 있다고 판단해 아이디어를 제안하고 서비스 방향을 정의했습니다.",
     features: [
@@ -89,7 +102,13 @@ const PROJECTS_DATA = [
     period: "2025.03 – 2025.06",
     role: "기획 파트 리드",
     summary: "유통 마진 문제로 손해를 보는 농부와 비싼 값에 사는 소비자를 직접 연결하는 B2C 농산물 직거래 플랫폼",
-    image: "/portfolio/images/farm2you.webp",
+    images: [
+      "/portfolio/images/farm2you.webp",
+    ],
+    links: [
+      { label: "Figma 프로토타입", url: "https://www.figma.com/design/rIEMvN2KyPtJ1ync08u3za/%EC%84%B1%EC%9E%A5%ED%86%A4-6%ED%8C%80?node-id=0-1&p=f" },
+      { label: "API 명세서", url: "https://www.notion.so/API-1f599d97679781b5a0bcc2bd22a84836" },
+    ],
     tags: ["React", "Spring Boot", "MySQL", "Figma", "API 명세", "구름톤 유니브"],
     background: "유통 과정에서 가격이 올라가는 구조적 문제로 소비자는 비싼 값에, 농부는 낮은 수익으로 농산물을 거래하는 문제를 발견했습니다. 생산자와 소비자를 직접 연결하는 플랫폼을 기획해 양측의 니즈를 동시에 해결하고자 했습니다.",
     features: [
@@ -124,7 +143,15 @@ const PROJECTS_DATA = [
     period: "2025.03 – 2025.06",
     role: "기획 파트 · 프론트엔드 담당",
     summary: "자기성장 과정에서 지속적인 동기부여와 멘탈 관리를 도와주는 앱. 기획자로 합류했으나 프론트엔드 이탈로 화면 개발까지 주도",
-    image: "/portfolio/images/growme.webp",
+    images: [
+      "/portfolio/images/growme.webp",
+      "/portfolio/images/growme2.png",
+    ],
+    links: [
+      { label: "Figma 화면 설계", url: "https://www.figma.com/design/1R9tRvNWKbWdpeNniY7GgG/31-%EA%B7%B8%EB%A1%9C%EC%9A%B0%EB%AF%B8-design?node-id=51-224&p=f" },
+      { label: "ERD 설계", url: "https://www.erdcloud.com/d/QTKJtoHewY5LXW7DF" },
+      { label: "발표 자료", url: "https://www.figma.com/slides/H8YGSeuFCOvnGazcpXvzPJ/31-%EA%B7%B8%EB%A1%9C%EC%9A%B0%EB%AF%B8-%EB%B0%9C%ED%91%9C-%EC%9E%90%EB%A3%8C?node-id=0-1&p=f" },
+    ],
     tags: ["React", "Spring Boot", "Figma", "구름톤 유니브 해커톤"],
     background: "자기성장 과정에서 지속적인 동기부여와 멘탈 관리가 어렵다는 문제를 정의하고, 작은 성장을 기록하고 응원받을 수 있는 앱을 기획했습니다. 해커톤 시작 2일 만에 프론트엔드 담당자와 연락이 두절되어 기획과 프론트엔드를 동시에 맡게 됐습니다.",
     features: [
@@ -157,7 +184,7 @@ const SKILLS_DATA = [
   { id: 1, category: "데이터 & 분석", items: ["SQL", "Python (pandas, matplotlib, Seaborn)", "ERD 설계 (draw.io, ERDCloud)", "ADSP 준비 중"], proficiency: 72 },
   { id: 2, category: "서비스 기획", items: ["서비스 기획서 작성", "Figma 프로토타입", "API 명세서 작성", "사용자 플로우 설계"], proficiency: 80 },
   { id: 3, category: "Backend", items: ["Java", "Spring Boot", "JPA / Hibernate", "REST API 설계"], proficiency: 78 },
-  { id: 4, category: "Frontend", items: ["React", "Redux Toolkit", "HTML/CSS", "JavaScript"], proficiency: 65 },
+  { id: 4, category: "Frontend", items: ["React", "Redux Toolkit", "HTML/CSS", "JavaScript"], proficiency: 40 },
   { id: 5, category: "Database", items: ["MySQL", "Oracle", "MongoDB", "ERD 설계"], proficiency: 75 },
   { id: 6, category: "DevOps & Tools", items: ["Git/GitHub", "Docker", "AWS (EC2, RDS)", "Linux"], proficiency: 60 },
   { id: 7, category: "협업 도구", items: ["Notion", "Figma", "Slack", "draw.io"], proficiency: 90 },
@@ -166,17 +193,6 @@ const SKILLS_DATA = [
 const TIMELINE_DATA = [
   {
     id: 1,
-    date: "2026.04",
-    title: "PM 인턴 지원 활동",
-    description: "서비스 기획 및 PM 직무로 취업 준비 중",
-    details: [
-      "B2C 양면 시장 기획 경험을 바탕으로 지원",
-      "데이터 기반 인사이트 제안 및 빠른 가설 검증에 기여하고자 함",
-    ],
-    type: "current",
-  },
-  {
-    id: 2,
     date: "2025.03 – 2025.06",
     title: "구름톤 유니브 4기 — 기획 파트",
     description: "카카오·구름 주최 기획 스터디, Farm2you·GrowMe 프로젝트 개발",
@@ -188,7 +204,7 @@ const TIMELINE_DATA = [
     type: "activity",
   },
   {
-    id: 3,
+    id: 2,
     date: "2024.09 – 2024.12",
     title: "iCatch — AI CCTV 케어 플랫폼",
     description: "졸업 프로젝트 팀장으로 B2C 양면 케어 서비스 기획 및 개발",
@@ -200,7 +216,7 @@ const TIMELINE_DATA = [
     type: "project",
   },
   {
-    id: 4,
+    id: 3,
     date: "2024.09 – 2024.12",
     title: "스마트 주차 안내 시스템 — 최우수상·우수상",
     description: "현장 관찰로 문제를 발견하고, YOLO AI로 해결한 P-학기제 프로젝트",
@@ -212,7 +228,7 @@ const TIMELINE_DATA = [
     type: "project",
   },
   {
-    id: 5,
+    id: 4,
     date: "2024.03 – 2024.07",
     title: "코드인 — 교내 개발 동아리",
     description: "가천대학교 개발 동아리 활동, 조별 언어 스터디 주 1회",
@@ -220,7 +236,7 @@ const TIMELINE_DATA = [
     type: "activity",
   },
   {
-    id: 6,
+    id: 5,
     date: "2024.03",
     title: "가천대학교 컴퓨터공학과 편입",
     description: "백엔드 개발에서 서비스 기획·데이터 분석으로 관심 확장",
@@ -228,7 +244,7 @@ const TIMELINE_DATA = [
     type: "education",
   },
   {
-    id: 7,
+    id: 6,
     date: "2022.09",
     title: "카페 파트타임 시작",
     description: "4년 이상 고객 응대 경험으로 실제 유저 공감력 형성",
@@ -239,7 +255,7 @@ const TIMELINE_DATA = [
     type: "activity",
   },
   {
-    id: 8,
+    id: 7,
     date: "2020.03 – 2023.01",
     title: "한양여자대학교 스마트IT과 졸업",
     description: "전문학사 졸업, 개발의 기초를 다진 시기",
