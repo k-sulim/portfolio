@@ -19,10 +19,15 @@ const PROJECTS_DATA = [
     images: [
       "/portfolio/images/icatch.webp",
       "/portfolio/images/icatch2.webp",
+      "/portfolio/images/icatch3.webp",
+      "/portfolio/images/icatch4.webp",
+      "/portfolio/images/icatch5.webp",
+      "/portfolio/images/icatch6.webp",
     ],
     links: [
+      { label: "GitHub (Server)", url: "https://github.com/gachon-iCatch/Server" },
+      { label: "GitHub (IoT)", url: "https://github.com/gachon-iCatch/IoT" },
       { label: "Figma 화면 설계", url: "https://www.figma.com/design/U7q3BFl7Cwp1FX2dVc5W2J/Untitled?node-id=0-1&p=f" },
-      { label: "ERD 설계", url: "https://www.erdcloud.com/d/E9X8bDBY7BEFeSCuo" },
     ],
     tags: ["Java", "Spring Boot", "React", "IoT", "AI", "ERD 설계"],
     background: "독거노인과 반려동물을 혼자 두고 외출하는 보호자가 실시간으로 상태를 확인할 수 없다는 문제를 정의했습니다. 두 사용자군의 불안 포인트를 각각 분석해 하나의 플랫폼으로 해결하는 서비스를 기획하고 팀장으로 프로젝트를 이끌었습니다.",
@@ -61,11 +66,15 @@ const PROJECTS_DATA = [
     role: "아이디어 기획 · 백엔드/프론트 연결 담당",
     summary: "교내 주차 문제를 현장 관찰로 발견하고, YOLO AI와 Raspberry Pi로 실시간 주차 현황을 안내하는 시스템",
     images: [
-      "/portfolio/images/parking.jpg",
+      "/portfolio/images/parking.png",
       "/portfolio/images/parking2.jpg",
+      "/portfolio/images/parking3.png",
+      "/portfolio/images/parking4.png",
+      "/portfolio/images/parking5.png",
     ],
     links: [
       { label: "GitHub", url: "https://github.com/Xzar79/MuhanParking" },
+      { label: "시연 영상", url: "https://www.youtube.com/watch?v=YSjpC6gUKrI" },
     ],
     tags: ["YOLO", "Raspberry Pi", "Python", "Spring Boot", "React", "IoT"],
     background: "교내 주차장 만차 여부를 운전자가 직접 확인해야 해서 불필요한 순환 운전이 반복되는 문제를 직접 경험하고 발견했습니다. 카메라와 AI로 실시간 주차 현황을 감지해 앱으로 안내하면 해결할 수 있다고 판단해 아이디어를 제안하고 서비스 방향을 정의했습니다.",
@@ -104,10 +113,15 @@ const PROJECTS_DATA = [
     summary: "유통 마진 문제로 손해를 보는 농부와 비싼 값에 사는 소비자를 직접 연결하는 B2C 농산물 직거래 플랫폼",
     images: [
       "/portfolio/images/farm2you.webp",
+      "/portfolio/images/farm2you3.webp",
+      "/portfolio/images/farm2you4.webp",
+      "/portfolio/images/farm2you5.webp",
+
     ],
     links: [
-      { label: "Figma 프로토타입", url: "https://www.figma.com/design/rIEMvN2KyPtJ1ync08u3za/%EC%84%B1%EC%9E%A5%ED%86%A4-6%ED%8C%80?node-id=0-1&p=f" },
-      { label: "API 명세서", url: "https://www.notion.so/API-1f599d97679781b5a0bcc2bd22a84836" },
+      { label: "GitHub (FE)", url: "https://github.com/9oormthon-univ/2025_SEASONTHON_TEAM_31_FE2" },
+      { label: "GitHub (BE)", url: "https://github.com/9oormthon-univ/2025_SEASONTHON_TEAM_31_BE" },
+      { label: "Figma 프로토타입,디자인, 발표자료", url: "https://www.figma.com/design/rIEMvN2KyPtJ1ync08u3za/%EC%84%B1%EC%9E%A5%ED%86%A4-6%ED%8C%80?node-id=0-1&p=f" },
     ],
     tags: ["React", "Spring Boot", "MySQL", "Figma", "API 명세", "구름톤 유니브"],
     background: "유통 과정에서 가격이 올라가는 구조적 문제로 소비자는 비싼 값에, 농부는 낮은 수익으로 농산물을 거래하는 문제를 발견했습니다. 생산자와 소비자를 직접 연결하는 플랫폼을 기획해 양측의 니즈를 동시에 해결하고자 했습니다.",
@@ -146,10 +160,12 @@ const PROJECTS_DATA = [
     images: [
       "/portfolio/images/growme.webp",
       "/portfolio/images/growme2.png",
+      "/portfolio/images/growme3.webp",
+      "/portfolio/images/growme4.webp",
+      "/portfolio/images/growme5.webp",
     ],
     links: [
       { label: "Figma 화면 설계", url: "https://www.figma.com/design/1R9tRvNWKbWdpeNniY7GgG/31-%EA%B7%B8%EB%A1%9C%EC%9A%B0%EB%AF%B8-design?node-id=51-224&p=f" },
-      { label: "ERD 설계", url: "https://www.erdcloud.com/d/QTKJtoHewY5LXW7DF" },
       { label: "발표 자료", url: "https://www.figma.com/slides/H8YGSeuFCOvnGazcpXvzPJ/31-%EA%B7%B8%EB%A1%9C%EC%9A%B0%EB%AF%B8-%EB%B0%9C%ED%91%9C-%EC%9E%90%EB%A3%8C?node-id=0-1&p=f" },
     ],
     tags: ["React", "Spring Boot", "Figma", "구름톤 유니브 해커톤"],

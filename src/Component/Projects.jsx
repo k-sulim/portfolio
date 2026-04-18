@@ -69,19 +69,7 @@ export default function Projects() {
       className={`project-card ${featured ? 'featured' : ''}`}
       onClick={() => handleProjectClick(project)}
     >
-      {/* 이미지 — 첫 번째 이미지만 카드에 표시 */}
-      {project.images && project.images.length > 0 && (
-        <div className="project-card-image">
-          <img
-            src={project.images[0]}
-            alt={project.title}
-            onError={(e) => { e.target.style.display = 'none'; }}
-          />
-          {project.images.length > 1 && (
-            <span className="image-count">+{project.images.length - 1}</span>
-          )}
-        </div>
-      )}
+
       <div className="project-card-body">
         <div className="project-card-header">
           <span className="project-category">{project.category.toUpperCase()}</span>
