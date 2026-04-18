@@ -1,17 +1,19 @@
 {
+  "homepage": "https://k-sulim.github.io/portfolio",
   "name": "kim-sulim-portfolio",
   "version": "1.0.0",
   "private": true,
   "description": "김수림의 포트폴리오 - React + Redux Toolkit + REST API",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.0",
-    "@reduxjs/toolkit": "^2.0.1",
     "react-redux": "^9.0.4",
+    "react-router-dom": "^6.20.0",
     "react-scripts": "5.0.1"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "json-server": "^0.17.4"
   },
   "scripts": {
@@ -20,7 +22,9 @@
     "server": "json-server --watch db.json --port 3001",
     "dev": "concurrently \"npm run server\" \"npm start\"",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

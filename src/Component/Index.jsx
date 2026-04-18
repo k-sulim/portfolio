@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
 
 export default function Index() {
-  const { count } = useSelector((state) => state.visitor);
   const heroRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -25,13 +23,11 @@ export default function Index() {
         clearInterval(timer);
       }
     }, 100);
-
     return () => clearInterval(timer);
   }, []);
 
   return (
     <div className={`index-page ${isVisible ? 'visible' : ''}`}>
-      {/* Hero Section */}
       <section ref={heroRef} className="hero">
         <div className="hero-background">
           <div className="gradient-orb orb-1"></div>
@@ -77,7 +73,6 @@ export default function Index() {
           </div>
         </div>
 
-        {/* Stats */}
         <div className="hero-stats">
           <div className="stat-item">
             <span className="stat-number">4</span>
@@ -88,21 +83,14 @@ export default function Index() {
             <span className="stat-number">2</span>
             <span className="stat-label">수상 경력</span>
           </div>
-          <div className="stat-divider"></div>
-          <div className="stat-item">
-            <span className="stat-number">{count}</span>
-            <span className="stat-label">방문자</span>
-          </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="scroll-indicator">
           <span>Scroll</span>
           <div className="scroll-line"></div>
         </div>
       </section>
 
-      {/* Quick Info Section */}
       <section className="quick-info">
         <div className="container">
           <div className="info-grid">
@@ -139,14 +127,13 @@ export default function Index() {
                 </svg>
               </div>
               <h3>Tech Stack</h3>
-              <p>SQL · Figma · React</p>
-              <p className="info-sub">Spring Boot · Python · ERD 설계</p>
+              <p>Java · Spring Boot · SQL</p>
+              <p className="info-sub">Python · ERD 설계 · Figma</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Projects Preview */}
       <section className="featured-preview">
         <div className="container">
           <div className="section-header">

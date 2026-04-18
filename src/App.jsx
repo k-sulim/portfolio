@@ -44,7 +44,7 @@ function Navigation() {
         <div className="nav-container">
           <Link to="/" className="logo">
             <span className="logo-bracket">&lt;</span>
-            KSL
+            KIM SULIM
             <span className="logo-bracket">/&gt;</span>
           </Link>
 
@@ -184,7 +184,7 @@ function AppContent() {
 export default function App() {
   return (
       <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename="/portfolio">
           <AppContent />
         </BrowserRouter>
       </Provider>

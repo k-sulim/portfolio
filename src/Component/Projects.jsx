@@ -7,32 +7,14 @@ export default function Projects() {
   const dispatch = useDispatch();
   const { items: projects, loading, filter, searchQuery } = useSelector((state) => state.projects);
   const searchInputRef = useRef(null);
-  
-  // REST API로 프로젝트 데이터 fetch
+
   useProjects();
 
-  // useRef - 검색 입력창에 포커스
-  useEffect(() => {
-    if (searchInputRef.current) {
-      // 페이지 로드 시 검색창에 포커스하지 않음 (UX 고려)
-    }
-  }, []);
-
-  // ============================================
-  // useMemo - 프로젝트 필터링 연산 최적화
-  // 의존성(projects, filter, searchQuery)이 변경될 때만 재계산
-  // ============================================
   const filteredProjects = useMemo(() => {
-    console.log('🔄 Filtering projects... (useMemo 실행)');
-    
     let result = [...projects];
-
-    // 카테고리 필터링
     if (filter !== 'all') {
       result = result.filter((project) => project.category === filter);
     }
-
-    // 검색어 필터링
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
       result = result.filter(
@@ -42,26 +24,16 @@ export default function Projects() {
           project.tags.some((tag) => tag.toLowerCase().includes(query))
       );
     }
-
     return result;
   }, [projects, filter, searchQuery]);
 
-  // ============================================
-  // useMemo - 카테고리별 프로젝트 수 계산
-  // ============================================
-  const categoryCounts = useMemo(() => {
-    console.log('🔢 Counting categories... (useMemo 실행)');
-    return {
-      all: projects.length,
-      ai: projects.filter((p) => p.category === 'ai').length,
-      web: projects.filter((p) => p.category === 'web').length,
-      app: projects.filter((p) => p.category === 'app').length,
-    };
-  }, [projects]);
+  const categoryCounts = useMemo(() => ({
+    all: projects.length,
+    ai: projects.filter((p) => p.category === 'ai').length,
+    web: projects.filter((p) => p.category === 'web').length,
+    app: projects.filter((p) => p.category === 'app').length,
+  }), [projects]);
 
-  // ============================================
-  // useMemo - Featured 프로젝트 분리
-  // ============================================
   const { featuredProjects, regularProjects } = useMemo(() => {
     const featured = filteredProjects.filter((p) => p.featured);
     const regular = filteredProjects.filter((p) => !p.featured);
@@ -95,17 +67,14 @@ export default function Projects() {
   return (
     <div className="projects-page">
       <div className="container">
-        {/* Page Header */}
         <header className="page-header">
           <h1>Projects</h1>
           <p className="page-subtitle">
-            실제 문제를 해결하기 위해 기획하고 팀을 이끌며 진행한 프로젝트들입니다.
+            실제 문제를 발견하고 기획부터 개발까지 직접 참여한 프로젝트들입니다.
           </p>
         </header>
 
-        {/* Filter & Search Section */}
         <div className="projects-controls">
-          {/* Category Filter */}
           <div className="filter-buttons">
             {filterButtons.map((btn) => (
               <button
@@ -119,7 +88,6 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Search Input - useRef 활용 */}
           <div className="search-box">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="11" cy="11" r="8"/>
@@ -133,10 +101,7 @@ export default function Projects() {
               onChange={(e) => dispatch(setSearchQuery(e.target.value))}
             />
             {searchQuery && (
-              <button 
-                className="search-clear"
-                onClick={() => dispatch(setSearchQuery(''))}
-              >
+              <button className="search-clear" onClick={() => dispatch(setSearchQuery(''))}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="18" y1="6" x2="6" y2="18"/>
                   <line x1="6" y1="6" x2="18" y2="18"/>
@@ -146,14 +111,8 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* Results Count */}
         <div className="results-info">
-          <p>
-            {filteredProjects.length === 0 
-              ? '검색 결과가 없습니다.'
-              : `${filteredProjects.length}개의 프로젝트`
-            }
-          </p>
+          <p>{filteredProjects.length === 0 ? '검색 결과가 없습니다.' : `${filteredProjects.length}개의 프로젝트`}</p>
         </div>
 
         {/* Featured Projects */}
@@ -170,32 +129,41 @@ export default function Projects() {
                   className="project-card featured"
                   onClick={() => handleProjectClick(project)}
                 >
-                  <div className="project-card-header">
-                    <span className="project-category">{project.category.toUpperCase()}</span>
-                    <span className="project-period">{project.period}</span>
-                  </div>
-                  
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-role">{project.role}</p>
-                  <p className="project-summary">{project.summary}</p>
-                  
-                  <div className="project-tags">
-                    {project.tags.slice(0, 4).map((tag, idx) => (
-                      <span key={idx} className="tag">{tag}</span>
-                    ))}
-                    {project.tags.length > 4 && (
-                      <span className="tag more">+{project.tags.length - 4}</span>
-                    )}
-                  </div>
-
-                  <div className="project-card-footer">
-                    <span className="view-detail">
-                      자세히 보기
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <line x1="5" y1="12" x2="19" y2="12"/>
-                        <polyline points="12 5 19 12 12 19"/>
-                      </svg>
-                    </span>
+                  {/* 프로젝트 이미지 */}
+                  {project.image && (
+                    <div className="project-card-image">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        onError={(e) => { e.target.style.display = 'none'; }}
+                      />
+                    </div>
+                  )}
+                  <div className="project-card-body">
+                    <div className="project-card-header">
+                      <span className="project-category">{project.category.toUpperCase()}</span>
+                      <span className="project-period">{project.period}</span>
+                    </div>
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-role">{project.role}</p>
+                    <p className="project-summary">{project.summary}</p>
+                    <div className="project-tags">
+                      {project.tags.slice(0, 4).map((tag, idx) => (
+                        <span key={idx} className="tag">{tag}</span>
+                      ))}
+                      {project.tags.length > 4 && (
+                        <span className="tag more">+{project.tags.length - 4}</span>
+                      )}
+                    </div>
+                    <div className="project-card-footer">
+                      <span className="view-detail">
+                        자세히 보기
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <line x1="5" y1="12" x2="19" y2="12"/>
+                          <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                      </span>
+                    </div>
                   </div>
                 </article>
               ))}
@@ -216,32 +184,41 @@ export default function Projects() {
                   className="project-card"
                   onClick={() => handleProjectClick(project)}
                 >
-                  <div className="project-card-header">
-                    <span className="project-category">{project.category.toUpperCase()}</span>
-                    <span className="project-period">{project.period}</span>
-                  </div>
-                  
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-role">{project.role}</p>
-                  <p className="project-summary">{project.summary}</p>
-                  
-                  <div className="project-tags">
-                    {project.tags.slice(0, 3).map((tag, idx) => (
-                      <span key={idx} className="tag">{tag}</span>
-                    ))}
-                    {project.tags.length > 3 && (
-                      <span className="tag more">+{project.tags.length - 3}</span>
-                    )}
-                  </div>
-
-                  <div className="project-card-footer">
-                    <span className="view-detail">
-                      자세히 보기
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <line x1="5" y1="12" x2="19" y2="12"/>
-                        <polyline points="12 5 19 12 12 19"/>
-                      </svg>
-                    </span>
+                  {/* 프로젝트 이미지 */}
+                  {project.image && (
+                    <div className="project-card-image">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        onError={(e) => { e.target.style.display = 'none'; }}
+                      />
+                    </div>
+                  )}
+                  <div className="project-card-body">
+                    <div className="project-card-header">
+                      <span className="project-category">{project.category.toUpperCase()}</span>
+                      <span className="project-period">{project.period}</span>
+                    </div>
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-role">{project.role}</p>
+                    <p className="project-summary">{project.summary}</p>
+                    <div className="project-tags">
+                      {project.tags.slice(0, 3).map((tag, idx) => (
+                        <span key={idx} className="tag">{tag}</span>
+                      ))}
+                      {project.tags.length > 3 && (
+                        <span className="tag more">+{project.tags.length - 3}</span>
+                      )}
+                    </div>
+                    <div className="project-card-footer">
+                      <span className="view-detail">
+                        자세히 보기
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <line x1="5" y1="12" x2="19" y2="12"/>
+                          <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                      </span>
+                    </div>
                   </div>
                 </article>
               ))}
@@ -249,29 +226,28 @@ export default function Projects() {
           </section>
         )}
 
-        {/* What I Learned Section */}
         <section className="learnings-section">
           <h2>프로젝트를 통해 배운 것</h2>
           <div className="learnings-grid">
             <div className="learning-card">
               <div className="learning-icon">🔍</div>
               <h3>문제 발견 능력</h3>
-              <p>일상에서 불편한 점을 발견하고 이를 기술로 해결하는 것을 좋아합니다.</p>
+              <p>현장 관찰로 불편한 점을 발견하고 이를 서비스로 해결하는 것을 좋아합니다.</p>
+            </div>
+            <div className="learning-card">
+              <div className="learning-icon">📊</div>
+              <h3>데이터 기반 기획</h3>
+              <p>DB 설계부터 지표 모니터링까지, 데이터 구조를 이해하는 기획자입니다.</p>
             </div>
             <div className="learning-card">
               <div className="learning-icon">👥</div>
-              <h3>리더십</h3>
-              <p>4개 프로젝트 모두 팀장을 맡으며, 팀을 이끄는 방법을 배웠습니다.</p>
+              <h3>양면 시장 이해</h3>
+              <p>B2C 서비스에서 두 사용자군의 니즈를 동시에 풀어가는 기획 경험을 쌓았습니다.</p>
             </div>
             <div className="learning-card">
-              <div className="learning-icon">📋</div>
-              <h3>기획력</h3>
-              <p>단순히 코드를 짜는 것이 아니라, "왜 이 기능이 필요한가?"를 먼저 고민합니다.</p>
-            </div>
-            <div className="learning-card">
-              <div className="learning-icon">🚀</div>
-              <h3>실행력</h3>
-              <p>아이디어를 실제로 작동하는 프로덕트로 만들어내는 과정을 즐깁니다.</p>
+              <div className="learning-icon">⚡</div>
+              <h3>빠른 실행과 반복</h3>
+              <p>완벽한 기획보다 빠른 가설 검증과 반복이 더 효과적임을 체득했습니다.</p>
             </div>
           </div>
         </section>
