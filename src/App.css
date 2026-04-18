@@ -2331,30 +2331,36 @@ footer {
   transform: translateY(0) !important;
 }
 
+/* 프로젝트 카드 이미지 스타일 - App.css에서 기존 이미지 스타일 부분을 교체하세요 */
+
 .project-card-image {
   width: 100%;
-  height: 200px;
   overflow: hidden;
   border-radius: 8px 8px 0 0;
   background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .project-card-image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 480px;
+  object-fit: contain;
   object-position: top;
   transition: transform 0.3s ease;
+  display: block;
 }
 
 .project-card:hover .project-card-image img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .project-card-body {
   padding: 1.2rem;
 }
 
-.project-card.featured .project-card-image {
-  height: 220px;
+.project-card.featured .project-card-image img {
+  max-height: 520px;
 }

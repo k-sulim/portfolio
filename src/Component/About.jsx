@@ -57,7 +57,7 @@ export function About() {
                   안녕하세요, <strong>개발자로 시작해 기획자로 성장한 김수림</strong>입니다.
                 </p>
                 <p>
-                  컴퓨터공학을 전공하며 Java, Spring Boot, React 등 다양한 기술 스택을 다뤄왔습니다.
+                  컴퓨터공학을 전공하며 Java, Spring Boot, Figma 등 다양한 기술 스택을 다뤄왔습니다.
                   하지만 프로젝트를 이끌면서 <em>'왜 이 기능이 필요한가'</em>, <em>'사용자에게 어떤 가치를 줄 수 있는가'</em>를
                   고민하는 것이 더 맞는다는 걸 알게 됐습니다.
                 </p>
@@ -114,12 +114,12 @@ export function About() {
                     <path d="M12 8v4l3 3"/>
                   </svg>
                 </div>
-                <h3>빠른 실행과 반복</h3>
+                <h3>문제 중심 사고</h3>
                 <p>
-                  완벽한 기획보다 빠른 가설 검증이 더 효과적이라는 것을 프로젝트를 통해 배웠습니다.
-                  빠르게 실행하고, 빠르게 배우고, 빠르게 개선합니다.
+                  기능을 만들기 전에 항상 "왜 이 기능이 필요한가"를 먼저 묻습니다.
+                  현장 관찰과 데이터를 통해 진짜 문제를 정의하고,
+                  가설을 세운 뒤 검증하는 과정을 반복합니다.
                 </p>
-              </div>
 
               <div className="value-card">
                 <div className="value-icon">
@@ -169,7 +169,7 @@ export function About() {
                 <p className="edu-period">2024.03 – 2025.02 (학사 졸업 · 편입)</p>
                 <ul className="edu-details">
                   <li>
-                    <strong>주요 과목:</strong> 고급 웹 프로그래밍(React), 데이터 처리 프로그래밍(Python), 운영체제
+                    <strong>주요 과목:</strong> 컴퓨터 구조, 운영체제, 디지털콘텐츠기획
                   </li>
                   <li>
                     <strong>활동:</strong> 코드인 개발 동아리, 구름톤 유니브 4기 기획 파트
@@ -195,7 +195,7 @@ export function About() {
                     <strong>주요 과목:</strong> 자료구조, 알고리즘, 데이터베이스, 네트워크
                   </li>
                   <li>
-                    <strong>자격증:</strong> 네트워크관리사 2급 취득, GTQ 포토샵 1급 취득
+                    <strong>자격증:</strong> 네트워크관리사 2급 취득, GTQ 포토샵 1급 취득, 워드프로세서 취득
                   </li>
                 </ul>
               </div>
