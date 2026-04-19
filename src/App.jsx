@@ -119,7 +119,7 @@ function Footer() {
     <footer>
       <div className="footer-content">
         <div className="footer-info">
-          <p className="footer-name">© 2025 Kim Sul-im</p>
+          <p className="footer-name">© 2025 Kim Su-lim</p>
           <p className="footer-desc">개발을 알고, 기획을 사랑하는 PM</p>
           <p className="footer-email">joy06270@naver.com</p>
         </div>
