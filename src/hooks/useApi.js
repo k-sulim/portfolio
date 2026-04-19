@@ -35,7 +35,7 @@ const PROJECTS_DATA = [
       { name: "실시간 CCTV 모니터링", desc: "IoT 카메라로 집 안 상황을 실시간으로 확인" },
       { name: "AI 이상 감지 알림", desc: "이상 행동 감지 시 보호자에게 즉시 알림 발송" },
       { name: "IoT 응답 시간 모니터링", desc: "감지 이벤트 발생 시 서버 응답 시간을 관리자 웹에서 실시간 확인" },
-      { name: "다중 사용자 지원", desc: "독거노인 보호자·반려동물 보호자 각각의 니즈에 맞는 맞춤 기능 제공" },
+      { name: "다중 사용자 지원", desc: "독거노인·반려동물 보호자 별도 화면 제공" },
     ],
     myRole: [
       "팀장으로서 전체 서비스 기획 리드 및 팀원 역할 분담",
@@ -64,7 +64,7 @@ const PROJECTS_DATA = [
     category: "ai",
     period: "2024.09 – 2024.12",
     role: "아이디어 기획 · 백엔드/프론트 연결 담당",
-    summary: "교내 주차 문제를 현장 관찰로 발견하고, YOLO AI와 Raspberry Pi로 실시간 주차 현황을 안내하는 시스템",
+    summary: "교내 주차 문제를 YOLO AI로 해결한 실시간 안내 시스템",
     images: [
       "/portfolio/images/parking.png",
       "/portfolio/images/parking2.jpg",
@@ -113,6 +113,7 @@ const PROJECTS_DATA = [
     summary: "유통 마진 문제로 손해를 보는 농부와 비싼 값에 사는 소비자를 직접 연결하는 B2C 농산물 직거래 플랫폼",
     images: [
       "/portfolio/images/farm2you.webp",
+      "/portfolio/images/farm2you2.webp",
       "/portfolio/images/farm2you3.webp",
       "/portfolio/images/farm2you4.webp",
       "/portfolio/images/farm2you5.webp",
@@ -139,9 +140,9 @@ const PROJECTS_DATA = [
       "팀원 개발 역량 파악 후 기능 범위 조정 및 우선순위 설정",
     ],
     challenge: {
-      problem: "팀원 대부분이 실무 경험이 많지 않아 처음에 기능 범위를 어디까지 잡아야 할지 불분명했음",
-      solution: "먼저 전체 기능을 제안한 뒤 실현 가능성을 함께 검토하며 범위를 좁히는 방식으로 진행. '모두가 한 가지씩은 새로운 기술에 도전한다'는 원칙 수립",
-      result: "B2C 양면 서비스에서 두 사용자군의 니즈를 동시에 풀어가는 기획 경험 확보",
+      problem: "팀원 대부분이 실무 경험이 많지 않아 기능 범위를 어디까지 잡아야 할지 불분명했고, 개발 중간에 막히는 지점이 자주 발생했음",
+      solution: "먼저 가능한 모든 기능을 제안한 뒤 팀원 역량을 파악하며 실현 가능한 범위로 좁혀나갔음. '모두가 한 가지씩 새로운 기술에 도전한다'는 원칙을 세워 동기부여와 성장을 동시에 고려. 개발이 막히는 지점에서는 대안적인 구현 방향을 직접 제안해 흐름을 이어나감",
+      result: "기획 완료 후 개발팀이 막힘 없이 진행할 수 있었고, 6인 팀이 데모데이까지 서비스를 완성해 발표함",
     },
     achievements: [
       "구름톤 유니브 4기 기획 파트 수료",
@@ -209,7 +210,7 @@ const SKILLS_DATA = [
 const TIMELINE_DATA = [
   {
     id: 1,
-    date: "2025.03 – 2025.06",
+    date: "2025.03 – 2025.09",
     title: "구름톤 유니브 4기 — 기획 파트",
     description: "카카오·구름 주최 기획 스터디, Farm2you·GrowMe 프로젝트 개발",
     details: [
@@ -221,7 +222,7 @@ const TIMELINE_DATA = [
   },
   {
     id: 2,
-    date: "2024.09 – 2024.12",
+    date: "2025.03 – 2025.6",
     title: "iCatch — AI CCTV 케어 플랫폼",
     description: "졸업 프로젝트 팀장으로 B2C 양면 케어 서비스 기획 및 개발",
     details: [
@@ -233,7 +234,7 @@ const TIMELINE_DATA = [
   },
   {
     id: 3,
-    date: "2024.09 – 2024.12",
+    date: "2024.11 – 2024.12",
     title: "스마트 주차 안내 시스템 — 최우수상·우수상",
     description: "현장 관찰로 문제를 발견하고, YOLO AI로 해결한 P-학기제 프로젝트",
     details: [

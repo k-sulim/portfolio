@@ -76,7 +76,7 @@ export function About() {
                 </div>
                 <div className="profile-info">
                   <h3>김수림</h3>
-                  <p>가천대학교 컴퓨터공학과 졸업 (2025.02)</p>
+                  <p>가천대학교 컴퓨터공학과 졸업 (2026.02)</p>
                   <p className="profile-tag">서비스 기획 · PM · 데이터 분석</p>
                   <div className="profile-links">
                     <a href="mailto:joy06270@naver.com">
@@ -168,7 +168,7 @@ export function About() {
               </div>
               <div className="edu-content">
                 <h3>가천대학교 컴퓨터공학과</h3>
-                <p className="edu-period">2024.03 – 2025.02 (학사 졸업 · 편입)</p>
+                <p className="edu-period">2024.03 – 2026.02 (학사 졸업 · 편입)</p>
                 <ul className="edu-details">
                   <li>
                     <strong>주요 과목:</strong> 컴퓨터 구조, 운영체제, 디지털콘텐츠기획
