@@ -312,6 +312,12 @@ footer {
   background: var(--bg-tertiary);
 }
 
+.footer-email {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+}
+
 /* ============================================
    Page Headers
    ============================================ */

@@ -13,7 +13,7 @@ const PROJECTS_DATA = [
     id: 1,
     title: "iCatch — AI CCTV 케어 플랫폼",
     category: "ai",
-    period: "2024.09 – 2024.12",
+    period: "2025.03 – 2025.06",
     role: "팀장 · 백엔드 개발 · 기획 리드",
     summary: "독거노인과 반려동물 보호자, 두 사용자군의 불안을 하나의 서비스로 해결하는 AI CCTV 케어 플랫폼",
     images: [
@@ -62,7 +62,7 @@ const PROJECTS_DATA = [
     id: 2,
     title: "스마트 주차 안내 시스템",
     category: "ai",
-    period: "2024.09 – 2024.12",
+    period: "2024.11 – 2024.12",
     role: "아이디어 기획 · 백엔드/프론트 연결 담당",
     summary: "교내 주차 문제를 YOLO AI로 해결한 실시간 안내 시스템",
     images: [
@@ -108,7 +108,7 @@ const PROJECTS_DATA = [
     id: 3,
     title: "Farm2you — 농산물 직거래 플랫폼",
     category: "web",
-    period: "2025.03 – 2025.06",
+    period: "2025.05 – 2025.05",
     role: "기획 파트 리드",
     summary: "유통 마진 문제로 손해를 보는 농부와 비싼 값에 사는 소비자를 직접 연결하는 B2C 농산물 직거래 플랫폼",
     images: [
@@ -155,7 +155,7 @@ const PROJECTS_DATA = [
     id: 4,
     title: "GrowMe — 자기성장 멘탈헬스 앱",
     category: "app",
-    period: "2025.03 – 2025.06",
+    period: "2025.09 – 2025.09",
     role: "기획 파트 · 프론트엔드 담당",
     summary: "자기성장 과정에서 지속적인 동기부여와 멘탈 관리를 도와주는 앱. 기획자로 합류했으나 프론트엔드 이탈로 화면 개발까지 주도",
     images: [

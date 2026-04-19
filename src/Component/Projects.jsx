@@ -193,9 +193,9 @@ export default function Projects() {
               <p>B2C 서비스에서 두 사용자군의 니즈를 동시에 풀어가는 기획 경험을 쌓았습니다.</p>
             </div>
             <div className="learning-card">
-              <div className="learning-icon">⚡</div>
-              <h3>빠른 실행과 반복</h3>
-              <p>완벽한 기획보다 빠른 가설 검증과 반복이 더 효과적임을 체득했습니다.</p>
+              <div className="learning-icon">🗣️</div>
+              <h3>팀과 함께 만드는 기획</h3>
+              <p>팀원 역량을 파악해 기능 범위를 조정하고, 막히는 지점에서 대안을 제시하며 함께 완성해갔습니다.</p>
             </div>
           </div>
         </section>
