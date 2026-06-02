@@ -83,6 +83,16 @@ export default function Index() {
             <span className="stat-number">2</span>
             <span className="stat-label">수상 경력</span>
           </div>
+          <div className="stat-divider"></div>
+          <div className="stat-item">
+            <span className="stat-number">584+</span>
+            <span className="stat-label">봉사 시간</span>
+          </div>
+          <div className="stat-divider"></div>
+          <div className="stat-item">
+            <span className="stat-number">4년+</span>
+            <span className="stat-label">카페 현장 경험</span>
+          </div>
         </div>
 
         <div className="scroll-indicator">
