@@ -1,0 +1,219 @@
+/* ── GrowMe-specific layout styles ── */
+
+.gm-crisis-chip {
+  background: rgba(239,68,68,.1);
+  color: #c53030;
+  border-color: rgba(239,68,68,.2);
+}
+
+/* Original plan grid */
+.gm-plan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 20px;
+  padding-bottom: 80px;
+}
+.gm-plan-card {
+  padding: 32px;
+  background: var(--cs-page-bg);
+  border: 1px solid var(--cs-line);
+  border-radius: 20px;
+}
+.gm-plan-card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cs-navy-900);
+  margin-bottom: 12px;
+}
+.gm-plan-card p {
+  font-size: 15px;
+  color: var(--cs-muted);
+  line-height: 1.7;
+}
+.gm-feature-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.gm-feature-list li {
+  font-size: 14px;
+  color: var(--cs-ink);
+  padding-left: 18px;
+  position: relative;
+}
+.gm-feature-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--cs-blue-700);
+  font-size: 12px;
+}
+.gm-plan-card.gm-plan-original {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--cs-blue-50);
+  border-color: var(--cs-blue-100);
+  text-align: center;
+  min-width: 160px;
+}
+.gm-plan-role-label {
+  font-family: var(--cs-en);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--cs-blue-700);
+  margin-bottom: 12px;
+}
+.gm-plan-role {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--cs-navy-900);
+  line-height: 1.4;
+  margin: 0;
+}
+.gm-plan-role span {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--cs-muted);
+}
+
+/* Crisis timeline */
+.gm-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-bottom: 80px;
+  position: relative;
+}
+.gm-timeline::before {
+  content: '';
+  position: absolute;
+  left: 86px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,.18);
+}
+.gm-event {
+  display: grid;
+  grid-template-columns: 80px 28px 1fr;
+  gap: 0 20px;
+  align-items: flex-start;
+  padding: 28px 0;
+}
+.gm-event-left { display: flex; justify-content: flex-end; }
+.gm-event-day {
+  font-family: var(--cs-en);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,.5);
+  padding-top: 3px;
+}
+.gm-day-crisis { color: #fca5a5; }
+
+.gm-event-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+  border: 2px solid currentColor;
+}
+.gm-dot-normal  { color: rgba(255,255,255,.4); background: rgba(255,255,255,.15); }
+.gm-dot-crisis  { color: #fca5a5; background: rgba(252,165,165,.25); }
+.gm-dot-action  { color: var(--cs-blue); background: rgba(149,177,238,.25); }
+.gm-dot-success { color: var(--cs-green); background: rgba(231,241,168,.2); }
+
+.gm-event-body h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.gm-event-body p {
+  font-size: 15px;
+  color: rgba(255,255,255,.72);
+  line-height: 1.65;
+  max-width: 38em;
+}
+
+/* Response list */
+.gm-response-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-bottom: 80px;
+}
+.gm-response-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 28px;
+  padding: 30px 0;
+  border-top: 1px solid var(--cs-line);
+  align-items: baseline;
+}
+.gm-resp-num {
+  font-family: var(--cs-en);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--cs-blue);
+}
+.gm-resp-body h4 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--cs-navy-900);
+  margin-bottom: 10px;
+}
+.gm-resp-body p {
+  font-size: 15.5px;
+  color: var(--cs-muted);
+  line-height: 1.7;
+  max-width: 36em;
+}
+
+/* Reflection cards */
+.gm-reflection-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-bottom: 90px;
+}
+.gm-reflection-card {
+  padding: 36px 28px;
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-line);
+  border-radius: 20px;
+  box-shadow: var(--cs-sh-sm);
+}
+.gm-ref-icon { font-size: 32px; margin-bottom: 16px; }
+.gm-reflection-card h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--cs-navy-900);
+  margin-bottom: 12px;
+}
+.gm-reflection-card p {
+  font-size: 14.5px;
+  color: var(--cs-muted);
+  line-height: 1.7;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .gm-plan-grid { grid-template-columns: 1fr; }
+  .gm-plan-card.gm-plan-original { min-width: unset; }
+  .gm-timeline::before { left: 56px; }
+  .gm-event { grid-template-columns: 50px 20px 1fr; }
+  .gm-reflection-cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .gm-event { grid-template-columns: 1fr; }
+  .gm-event-left, .gm-event-dot { display: none; }
+  .gm-timeline::before { display: none; }
+}

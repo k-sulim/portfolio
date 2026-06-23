@@ -1,10 +1,19 @@
 import { useMemo, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter, setSearchQuery, openModal } from '../store/store';
+import { setFilter, setSearchQuery } from '../store/store';
 import { useProjects } from '../hooks/useApi';
+
+const CASE_STUDY_PATHS = {
+  1: '/case-study/icatch',
+  2: '/case-study/parking',
+  3: '/case-study/farm2you',
+  4: '/case-study/growme',
+};
 
 export default function Projects() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { items: projects, loading, filter, searchQuery } = useSelector((state) => state.projects);
   const searchInputRef = useRef(null);
 
@@ -41,7 +50,8 @@ export default function Projects() {
   }, [filteredProjects]);
 
   const handleProjectClick = (project) => {
-    dispatch(openModal(project));
+    const path = CASE_STUDY_PATHS[project.id];
+    if (path) navigate(path);
   };
 
   const filterButtons = [
@@ -88,7 +98,7 @@ export default function Projects() {
         </div>
         <div className="project-card-footer">
           <span className="view-detail">
-            자세히 보기
+            케이스 스터디 보기
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="5" y1="12" x2="19" y2="12"/>
               <polyline points="12 5 19 12 12 19"/>

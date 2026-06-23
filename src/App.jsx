@@ -8,7 +8,10 @@ import {About} from "./Component/About";
 import Timeline from "./Component/Timeline";
 import Projects from "./Component/Projects";
 import Skills from "./Component/Skills";
-import ProjectModal from "./Component/ProjectModal";
+import CaseStudyICatch from "./Component/CaseStudyICatch";
+import CaseStudyParking from "./Component/CaseStudyParking";
+import CaseStudyFarm2you from "./Component/CaseStudyFarm2you";
+import CaseStudyGrowMe from "./Component/CaseStudyGrowMe";
 import "./App.css";
 
 function Navigation() {
@@ -143,7 +146,6 @@ function Footer() {
 
 function AppContent() {
   const { mode } = useSelector((state) => state.theme);
-  const { isModalOpen } = useSelector((state) => state.ui);
 
   useVisitor();
 
@@ -162,12 +164,15 @@ function AppContent() {
             <Route path="/timeline" element={<Timeline />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/skills" element={<Skills />} />
+            <Route path="/case-study/icatch" element={<CaseStudyICatch />} />
+            <Route path="/case-study/parking" element={<CaseStudyParking />} />
+            <Route path="/case-study/farm2you" element={<CaseStudyFarm2you />} />
+            <Route path="/case-study/growme" element={<CaseStudyGrowMe />} />
           </Routes>
         </main>
 
         <Footer />
 
-        {isModalOpen && <ProjectModal />}
       </div>
   );
 }
