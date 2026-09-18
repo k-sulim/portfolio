@@ -1,25 +1,29 @@
-import { BrowserRouter, Route, Routes, Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { Provider, useSelector, useDispatch } from "react-redux";
-import store, { toggleTheme, closeMobileMenu, toggleMobileMenu } from "./store/store";
+import store, { toggleTheme, closeMobileMenu, toggleMobileMenu, setActiveSection } from "./store/store";
 import { useVisitor } from "./hooks/useApi";
 import Index from "./Component/Index";
 import {About} from "./Component/About";
 import Timeline from "./Component/Timeline";
-import Projects from "./Component/Projects";
+import CombinedProjects from "./Component/CombinedProjects";
 import Skills from "./Component/Skills";
-import CaseStudyICatch from "./Component/CaseStudyICatch";
-import CaseStudyParking from "./Component/CaseStudyParking";
-import CaseStudyFarm2you from "./Component/CaseStudyFarm2you";
-import CaseStudyGrowMe from "./Component/CaseStudyGrowMe";
 import "./App.css";
+
+const SECTIONS = [
+  { id: 'home', label: null },
+  { id: 'about', label: 'About' },
+  { id: 'timeline', label: 'Timeline' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'skills', label: 'Skills' },
+];
+
+const NAV_LINKS = SECTIONS.filter((s) => s.label);
 
 function Navigation() {
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
   const dispatch = useDispatch();
   const { mode } = useSelector((state) => state.theme);
-  const { isMobileMenuOpen } = useSelector((state) => state.ui);
+  const { isMobileMenuOpen, activeSection } = useSelector((state) => state.ui);
   const navRef = useRef(null);
 
   useEffect(() => {
@@ -30,35 +34,50 @@ function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // 현재 화면에 보이는 섹션을 감지해서 상단바 활성 메뉴 표시
   useEffect(() => {
-    dispatch(closeMobileMenu());
-  }, [location, dispatch]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            dispatch(setActiveSection(entry.target.id));
+          }
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+    );
 
-  const navLinks = [
-    { path: '/about', label: 'About' },
-    { path: '/timeline', label: 'Timeline' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/skills', label: 'Skills' },
-  ];
+    SECTIONS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [dispatch]);
+
+  const handleNavClick = () => {
+    dispatch(closeMobileMenu());
+  };
 
   return (
       <nav ref={navRef} className={`nav ${scrolled ? 'nav-scrolled' : ''}`}>
         <div className="nav-container">
-          <Link to="/" className="logo">
+          <a href="#home" className="logo" onClick={handleNavClick}>
             <span className="logo-bracket">&lt;</span>
             KIM SULIM
             <span className="logo-bracket">/&gt;</span>
-          </Link>
+          </a>
 
           <div className="nav-links">
-            {navLinks.map((link) => (
-                <Link
-                    key={link.path}
-                    to={link.path}
-                    className={location.pathname === link.path ? 'active' : ''}
+            {NAV_LINKS.map((link) => (
+                <a
+                    key={link.id}
+                    href={`#${link.id}`}
+                    className={activeSection === link.id ? 'active' : ''}
+                    onClick={handleNavClick}
                 >
                   {link.label}
-                </Link>
+                </a>
             ))}
           </div>
 
@@ -103,14 +122,15 @@ function Navigation() {
         </div>
 
         <div className={`mobile-nav ${isMobileMenuOpen ? 'open' : ''}`}>
-          {navLinks.map((link) => (
-              <Link
-                  key={link.path}
-                  to={link.path}
-                  className={location.pathname === link.path ? 'active' : ''}
+          {NAV_LINKS.map((link) => (
+              <a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  className={activeSection === link.id ? 'active' : ''}
+                  onClick={handleNavClick}
               >
                 {link.label}
-              </Link>
+              </a>
           ))}
         </div>
       </nav>
@@ -158,17 +178,25 @@ function AppContent() {
         <Navigation />
 
         <main>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/timeline" element={<Timeline />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/case-study/icatch" element={<CaseStudyICatch />} />
-            <Route path="/case-study/parking" element={<CaseStudyParking />} />
-            <Route path="/case-study/farm2you" element={<CaseStudyFarm2you />} />
-            <Route path="/case-study/growme" element={<CaseStudyGrowMe />} />
-          </Routes>
+          <section id="home" className="page-section section-home">
+            <Index />
+          </section>
+
+          <section id="about" className="page-section section-about">
+            <About />
+          </section>
+
+          <section id="timeline" className="page-section section-timeline">
+            <Timeline />
+          </section>
+
+          <section id="projects" className="page-section section-projects">
+            <CombinedProjects />
+          </section>
+
+          <section id="skills" className="page-section section-skills">
+            <Skills />
+          </section>
         </main>
 
         <Footer />
@@ -180,9 +208,7 @@ function AppContent() {
 export default function App() {
   return (
       <Provider store={store}>
-        <BrowserRouter basename="/portfolio">
-          <AppContent />
-        </BrowserRouter>
+        <AppContent />
       </Provider>
   );
 }

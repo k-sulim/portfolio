@@ -131,14 +131,8 @@
 }
 
 /* Hero image override for web/landscape screenshots */
-.cs-hero-img {
-  background: linear-gradient(180deg, #FFF3E8, var(--cs-page-bg));
-}
 .cs-hero-img img {
-  width: 95%;
-  max-width: 960px;
-  height: 200px;
-  border-radius: 10px 10px 0 0;
+  max-width: 860px;
 }
 
 /* Responsive */

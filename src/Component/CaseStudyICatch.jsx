@@ -47,7 +47,7 @@ export default function CaseStudyICatch() {
             </div>
           </div>
 
-          <div className="cs-hero-img">
+          <div className="cs-hero-img portrait">
             <img src={process.env.PUBLIC_URL + '/images/icatch.webp'} alt="iCatch 앱 메인 화면" />
           </div>
         </div>
@@ -330,11 +330,24 @@ export default function CaseStudyICatch() {
         </div>
       </section>
 
-      {/* ── Extra Screen ── */}
+      {/* ── Extra Screens ── */}
       <section className="cs-band cream">
         <div className="cs-wrap">
+          <div className="cs-bighead" style={{ paddingTop: 60 }}>
+            <div className="cs-label">Screenshots</div>
+            <h2>앱 화면</h2>
+          </div>
           <div className="cs-screens-gallery">
-            <img src={process.env.PUBLIC_URL + '/images/icatch6.webp'} alt="iCatch 추가 화면" />
+            <img src={process.env.PUBLIC_URL + '/images/icatch6.webp'} alt="iCatch 화면" />
+            {/* 이미지 추가 슬롯 */}
+            <div className="cs-img-slot">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>이미지<br />추가 예정</span>
+            </div>
+            <div className="cs-img-slot">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>이미지<br />추가 예정</span>
+            </div>
           </div>
         </div>
       </section>

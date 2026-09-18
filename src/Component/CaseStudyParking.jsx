@@ -186,6 +186,11 @@ export default function CaseStudyParking() {
             <img src={process.env.PUBLIC_URL + '/images/parking3.png'} alt="주차 안내 시스템 화면 3" />
             <img src={process.env.PUBLIC_URL + '/images/parking4.png'} alt="주차 안내 시스템 화면 4" />
             <img src={process.env.PUBLIC_URL + '/images/parking5.png'} alt="주차 안내 시스템 화면 5" />
+            {/* 이미지 추가 슬롯 */}
+            <div className="cs-img-slot">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>이미지<br />추가 예정</span>
+            </div>
           </div>
         </div>
       </section>

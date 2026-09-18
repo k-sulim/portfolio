@@ -1,0 +1,727 @@
+/* ================================================================
+   Combined Projects Page — additional styles
+   Imports CaseStudyICatch.css as base (cs- variables & bands)
+   ================================================================ */
+
+/* ── Project Tab Nav ─────────────────────────────────────────── */
+.cp-nav {
+  position: sticky;
+  top: 88px;
+  z-index: 500;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--cs-line);
+}
+
+[data-theme="dark"] .cp-nav {
+  background: rgba(12, 12, 12, 0.96);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.cp-nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  gap: 4px;
+  height: 52px;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cp-nav-inner::-webkit-scrollbar { display: none; }
+
+.cp-nav-tab {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cs-muted);
+  font-family: var(--cs-kr);
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cp-nav-tab:hover {
+  background: var(--cs-line-2);
+  color: var(--cs-ink);
+}
+
+.cp-nav-tab.active {
+  background: var(--cs-blue-50);
+  color: var(--cs-blue-mid);
+  font-weight: 700;
+}
+
+/* ── Project Section ──────────────────────────────────────────── */
+.cp-project {
+  border-top: 4px solid var(--cs-line);
+  scroll-margin-top: 140px;
+}
+
+.cp-project:first-of-type { border-top: none; }
+
+/* ── Project Header (dark band) ───────────────────────────────── */
+.cp-proj-hd {
+  padding: 64px 0 52px;
+  background: var(--cs-navy);
+  color: #fff;
+}
+
+.cp-proj-num {
+  font-family: var(--cs-en);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .35);
+  margin-bottom: 14px;
+}
+
+.cp-proj-overline {
+  font-family: var(--cs-en);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--cs-blue);
+  margin-bottom: 18px;
+}
+
+.cp-proj-hd h2 {
+  font-size: clamp(28px, 4.5vw, 52px);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.12;
+  letter-spacing: -.03em;
+  margin-bottom: 24px;
+}
+
+.cp-proj-hd h2 em {
+  font-style: normal;
+  color: var(--cs-blue);
+}
+
+.cp-proj-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cp-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 13px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--cs-kr);
+  background: rgba(255, 255, 255, .1);
+  color: rgba(255, 255, 255, .85);
+  border: 1px solid rgba(255, 255, 255, .14);
+}
+
+.cp-tag.blue  { background: rgba(37,99,235,.28);  color: #93c5fd; border-color: rgba(37,99,235,.4); }
+.cp-tag.green { background: rgba(22,163,74,.2);   color: #86efac; border-color: rgba(22,163,74,.3); }
+.cp-tag.red   { background: rgba(239,68,68,.2);   color: #fca5a5; border-color: rgba(239,68,68,.3); }
+
+/* ── Hero Two-Column ──────────────────────────────────────────── */
+.cp-hero-cols {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 64px;
+  align-items: center;
+  padding: 56px 0 52px;
+}
+
+.cp-lede {
+  font-size: 17px;
+  color: var(--cs-muted);
+  line-height: 1.78;
+  margin-bottom: 28px;
+}
+
+.cp-prob-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cp-prob-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.cp-prob-dot {
+  color: var(--cs-blue-mid);
+  font-size: 8px;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.cp-prob-item strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cs-ink);
+  margin-bottom: 4px;
+}
+
+.cp-prob-item p {
+  font-size: 14px;
+  color: var(--cs-muted);
+  line-height: 1.65;
+}
+
+/* portrait = narrow mobile screenshot
+   fixed aspect-ratio box + object-fit: contain so images with
+   different native ratios never get cropped — leftover space is
+   letterboxed with a background fill instead */
+.cp-hero-portrait {
+  width: 260px;
+  aspect-ratio: 3 / 4;
+  flex-shrink: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--cs-surface);
+  box-shadow: var(--cs-sh-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-hero-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* landscape = wide web/app screenshot */
+.cp-hero-landscape {
+  width: 420px;
+  aspect-ratio: 3 / 4;
+  flex-shrink: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--cs-surface);
+  box-shadow: var(--cs-sh-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-hero-landscape img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Section Heading ──────────────────────────────────────────── */
+.cp-section-head {
+  padding: 52px 0 36px;
+}
+
+.cp-label {
+  font-family: var(--cs-en);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--cs-blue-mid);
+  margin-bottom: 12px;
+}
+
+.cp-section-head h3 {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  color: var(--cs-navy-900);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.cp-section-head p {
+  font-size: 15px;
+  color: var(--cs-muted);
+  line-height: 1.75;
+  margin-top: 10px;
+}
+
+/* ── Feature Rows (mobile app features) ──────────────────────── */
+.cp-frows { padding-bottom: 8px; }
+
+.cp-frow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--cs-line);
+}
+
+.cp-frow:last-child { border-bottom: none; }
+.cp-frow:nth-child(even) .cp-fimg { order: 2; }
+
+.cp-fimg {
+  aspect-ratio: 3 / 4;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--cs-surface);
+  box-shadow: var(--cs-sh-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cp-fimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.cp-fn {
+  font-family: var(--cs-en);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--cs-blue-mid);
+  letter-spacing: .1em;
+  margin-bottom: 10px;
+}
+
+.cp-frow h4 {
+  font-size: clamp(19px, 2.5vw, 24px);
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--cs-navy-900);
+}
+
+.cp-frow p {
+  font-size: 15px;
+  color: var(--cs-muted);
+  line-height: 1.75;
+}
+
+/* ── Mobile App Gallery (portrait horizontal scroll) ─────────── */
+.cp-gallery {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cs-line) transparent;
+  align-items: flex-start;
+}
+
+.cp-gallery::-webkit-scrollbar       { height: 4px; }
+.cp-gallery::-webkit-scrollbar-track { background: transparent; }
+.cp-gallery::-webkit-scrollbar-thumb { background: var(--cs-line); border-radius: 4px; }
+
+.cp-gallery > img {
+  height: 420px;
+  width: auto;
+  max-width: none;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: var(--cs-sh-md);
+}
+
+/* ── Admin Feature Cards (on navy bg) ────────────────────────── */
+.cp-admin-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-bottom: 52px;
+}
+
+.cp-admin-feat {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.cp-af-num {
+  font-family: var(--cs-en);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  color: var(--cs-blue);
+  margin-bottom: 14px;
+}
+
+.cp-admin-feat h4 {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.cp-admin-feat p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, .65);
+  line-height: 1.65;
+}
+
+/* ── Admin Web Gallery (landscape grid) ──────────────────────── */
+.cp-web-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding-bottom: 56px;
+}
+
+.cp-web-gallery > img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: var(--cs-surface);
+  border-radius: 12px;
+  box-shadow: var(--cs-sh-md);
+  display: block;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cp-web-gallery > img:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--cs-sh-lg);
+}
+
+/* Wide variant: 2 columns */
+.cp-web-gallery.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.cp-web-gallery.cols-2 > img { aspect-ratio: 16 / 10; }
+
+/* ── Role Cards (on navy bg) ─────────────────────────────────── */
+.cp-role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-bottom: 64px;
+}
+
+.cp-role-card {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.cp-role-num {
+  font-family: var(--cs-en);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  color: var(--cs-blue);
+  margin-bottom: 12px;
+}
+
+.cp-role-card h4 {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.cp-role-card p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, .65);
+  line-height: 1.65;
+}
+
+/* ── Discovery Steps (parking) ───────────────────────────────── */
+.cp-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-bottom: 56px;
+}
+
+.cp-step {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--cs-line);
+}
+
+.cp-step:last-child { border-bottom: none; }
+
+.cp-step-num {
+  font-family: var(--cs-en);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--cs-blue-50);
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.cp-step h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cs-navy-900);
+  margin-bottom: 8px;
+}
+
+.cp-step p {
+  font-size: 14.5px;
+  color: var(--cs-muted);
+  line-height: 1.7;
+}
+
+/* ── Challenge Cards (parking, on navy) ──────────────────────── */
+.cp-challenge-row {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr 40px 1fr;
+  gap: 0;
+  align-items: start;
+  padding-bottom: 56px;
+}
+
+.cp-ch-card {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.cp-ch-card.problem { border-color: rgba(239,68,68,.3); }
+.cp-ch-card.result  { border-color: rgba(74,222,128,.3); }
+
+.cp-ch-label {
+  font-family: var(--cs-en);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.cp-ch-card.problem .cp-ch-label { color: #fca5a5; }
+.cp-ch-card.action  .cp-ch-label { color: var(--cs-blue); }
+.cp-ch-card.result  .cp-ch-label { color: #4ade80; }
+
+.cp-ch-card h4 { color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.cp-ch-card p  { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.65; }
+
+.cp-ch-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.3);
+  font-size: 20px;
+  margin-top: 32px;
+}
+
+/* ── Award Cards ─────────────────────────────────────────────── */
+.cp-award-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-bottom: 56px;
+}
+
+.cp-award-card {
+  text-align: center;
+  padding: 32px 20px;
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-line);
+  border-radius: 16px;
+}
+
+.cp-award-card .trophy { font-size: 36px; margin-bottom: 16px; }
+.cp-award-title { font-size: 16px; font-weight: 700; color: var(--cs-navy-900); margin-bottom: 6px; }
+.cp-award-org   { font-size: 13px; color: var(--cs-muted); line-height: 1.5; }
+
+/* ── Dual Market Cards (farm2you) ────────────────────────────── */
+.cp-dual-market {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  align-items: center;
+  padding-bottom: 56px;
+}
+
+.cp-market-card {
+  padding: 32px 28px;
+  border-radius: 20px;
+  border: 1px solid var(--cs-line);
+}
+
+.cp-market-card.farmer   { background: #f0fdf4; border-color: #d1fae5; }
+.cp-market-card.consumer { background: var(--cs-blue-50); border-color: var(--cs-blue-100); }
+
+.cp-market-label {
+  font-family: var(--cs-en);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.cp-market-card.farmer .cp-market-label   { color: var(--cs-green-600); }
+.cp-market-card.consumer .cp-market-label { color: var(--cs-blue-mid); }
+
+.cp-market-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--cs-navy-900); }
+.cp-market-card p  { font-size: 14px; color: var(--cs-muted); line-height: 1.65; }
+
+.cp-bridge-arrow {
+  text-align: center;
+  font-size: 24px;
+  color: var(--cs-blue-mid);
+  font-weight: 700;
+}
+
+/* ── Bridge Cards (farm2you, on navy) ────────────────────────── */
+.cp-bridge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-bottom: 56px;
+}
+
+.cp-bridge-card {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.cp-bc-num {
+  font-family: var(--cs-en);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  color: var(--cs-blue);
+  margin-bottom: 14px;
+}
+
+.cp-bridge-card h4 { color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+.cp-bridge-card p  { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.65; }
+
+/* ── Crisis Timeline (growme, on navy) ───────────────────────── */
+.cp-timeline { padding-bottom: 56px; }
+
+.cp-tl-event {
+  display: grid;
+  grid-template-columns: 72px 20px 1fr;
+  gap: 0 16px;
+  min-height: 72px;
+}
+
+.cp-tl-event + .cp-tl-event { margin-top: 4px; }
+
+.cp-tl-day {
+  font-family: var(--cs-en);
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,.4);
+  text-align: right;
+  padding-top: 3px;
+}
+
+.cp-tl-day.crisis { color: #f87171; }
+
+.cp-tl-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cp-tl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.25);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.cp-tl-dot.crisis  { background: #f87171; }
+.cp-tl-dot.action  { background: var(--cs-blue); }
+.cp-tl-dot.success { background: #4ade80; }
+
+.cp-tl-connector {
+  flex: 1;
+  width: 1px;
+  background: rgba(255,255,255,.1);
+  margin: 4px 0;
+}
+
+.cp-tl-event:last-child .cp-tl-connector { display: none; }
+
+.cp-tl-body { padding-bottom: 20px; }
+
+.cp-tl-body h4 { color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+.cp-tl-body p  { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.65; }
+
+/* ── Reflection Cards (growme) ───────────────────────────────── */
+.cp-reflection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-bottom: 60px;
+}
+
+.cp-reflection-card {
+  padding: 28px;
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-line);
+  border-radius: 16px;
+}
+
+.cp-ref-icon { font-size: 28px; margin-bottom: 12px; }
+
+.cp-reflection-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--cs-navy-900); }
+.cp-reflection-card p  { font-size: 14px; color: var(--cs-muted); line-height: 1.65; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .cp-nav-inner { padding: 0 20px; }
+
+  .cp-proj-hd { padding: 48px 0 40px; }
+
+  .cp-hero-cols { grid-template-columns: 1fr; gap: 28px; padding: 40px 0 32px; }
+  .cp-hero-portrait { width: 200px; }
+  .cp-hero-landscape { width: 100%; max-width: 320px; }
+
+  .cp-frow { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }
+  .cp-frow:nth-child(even) .cp-fimg { order: 0; }
+
+  .cp-admin-features { grid-template-columns: 1fr; }
+  .cp-web-gallery { grid-template-columns: repeat(2, 1fr); }
+
+  .cp-role-grid { grid-template-columns: 1fr; }
+
+  .cp-challenge-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cp-ch-arrow { margin-top: 0; transform: rotate(90deg); }
+
+  .cp-award-row { grid-template-columns: 1fr; }
+
+  .cp-dual-market { grid-template-columns: 1fr; gap: 12px; }
+  .cp-bridge-arrow { transform: rotate(90deg); }
+
+  .cp-bridge-grid { grid-template-columns: 1fr; }
+  .cp-reflection-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .cp-web-gallery { grid-template-columns: 1fr; }
+  .cp-web-gallery > img { aspect-ratio: 16 / 10; }
+}
