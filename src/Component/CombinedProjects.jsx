@@ -15,6 +15,24 @@ const NAV_OFFSET = 88 + 52; // main pill nav (88px) + project tab nav (52px)
 
 export default function CombinedProjects() {
   const [activeId, setActiveId] = useState('icatch');
+  const [lightbox, setLightbox] = useState(null);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKeyDown = (e) => { if (e.key === 'Escape') setLightbox(null); };
+    document.addEventListener('keydown', onKeyDown);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [lightbox]);
+
+  const openLightbox = (e) => {
+    if (e.target.tagName === 'IMG') {
+      setLightbox({ src: e.target.src, alt: e.target.alt });
+    }
+  };
 
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
@@ -38,7 +56,7 @@ export default function CombinedProjects() {
           if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
-      { threshold: 0.1, rootMargin: `-${NAV_OFFSET}px 0px -40% 0px` }
+      { threshold: 0, rootMargin: `-${NAV_OFFSET}px 0px -40% 0px` }
     );
 
     NAV_ITEMS.forEach(({ id }) => {
@@ -132,7 +150,7 @@ export default function CombinedProjects() {
                 </div>
               </div>
               <div className="cp-hero-portrait">
-                <img src={`${PUB}/images/icatch.webp`} alt="iCatch 앱 메인 화면" />
+                <img src={`${PUB}/images/icatch1.webp`} alt="iCatch 앱 메인 화면" />
               </div>
             </div>
           </div>
@@ -170,7 +188,7 @@ export default function CombinedProjects() {
               </div>
               <div className="cp-frow">
                 <div className="cp-fimg">
-                  <img src={`${PUB}/images/icatch5.webp`} alt="양면 사용자 구조" />
+                  <img src={`${PUB}/images/icatch4.webp`} alt="카메라 등록 화면" />
                 </div>
                 <div>
                   <div className="cp-fn">F.03</div>
@@ -194,8 +212,11 @@ export default function CombinedProjects() {
               <img src={`${PUB}/images/icatch1.webp`} alt="iCatch 화면 1" />
               <img src={`${PUB}/images/icatch2.webp`} alt="실시간 모니터링" />
               <img src={`${PUB}/images/icatch3.webp`} alt="AI 알림" />
-              <img src={`${PUB}/images/icatch5.webp`} alt="사용자 구조" />
+              <img src={`${PUB}/images/icatch5.webp`} alt="iCatch 화면 5" />
               <img src={`${PUB}/images/icatch6.webp`} alt="iCatch 화면 6" />
+              <img src={`${PUB}/images/icatch7.webp`} alt="iCatch 화면 7" />
+              <img src={`${PUB}/images/icatch8.webp`} alt="iCatch 화면 8" />
+              <img src={`${PUB}/images/icatch9.webp`} alt="iCatch 화면 9" />
             </div>
           </div>
         </div>
@@ -204,8 +225,8 @@ export default function CombinedProjects() {
         <div className="cs-band navy">
           <div className="cs-wrap">
             <div className="cp-section-head">
-              <div className="cp-label" style={{ color: 'var(--cs-blue)' }}>Admin Web · 시설 관리자</div>
-              <h3 style={{ color: '#fff' }}>시설 관리자를 위한 실시간 웹 대시보드</h3>
+              <div className="cp-label">Admin Web · 시설 관리자</div>
+              <h3>시설 관리자를 위한 실시간 웹 대시보드</h3>
               <p>
                 개인 보호자 앱과 별개로, 시설 관리자는 웹 기반 대시보드에서 수십 개의 기기를 동시에 모니터링합니다.
                 1명이 다수를 관리할 수 있어 순찰 공백과 사람 의존도를 동시에 줄입니다.
@@ -238,25 +259,22 @@ export default function CombinedProjects() {
               <div className="cp-label">관리자 웹 스크린샷</div>
               <h3>대시보드 화면</h3>
             </div>
-            <div className="cp-web-gallery">
-              <img src={`${PUB}/images/icatch4.webp`}  alt="관리자 대시보드" />
-              <img src={`${PUB}/images/icatch7.webp`}  alt="관리자 화면 2" />
-              <img src={`${PUB}/images/icatch8.webp`}  alt="관리자 화면 3" />
-              <img src={`${PUB}/images/icatch9.webp`}  alt="관리자 화면 4" />
-              <img src={`${PUB}/images/icatch10.webp`} alt="관리자 화면 5" />
-              <img src={`${PUB}/images/icatch11.webp`} alt="관리자 화면 6" />
-              <img src={`${PUB}/images/icatch12.webp`} alt="관리자 화면 7" />
-              <img src={`${PUB}/images/icatch13.webp`} alt="관리자 화면 8" />
+            <div className="cp-web-gallery" onClick={openLightbox}>
+              <img src={`${PUB}/images/icatch10.webp`} alt="관리자 대시보드" />
+              <img src={`${PUB}/images/icatch11.webp`} alt="관리자 화면 2" />
+              <img src={`${PUB}/images/icatch12.webp`} alt="관리자 화면 3" />
+              <img src={`${PUB}/images/icatch13.webp`} alt="관리자 화면 4" />
+              <img src={`${PUB}/images/icatch14.webp`} alt="관리자 화면 5" />
             </div>
           </div>
         </div>
 
         {/* My Role */}
-        <div className="cs-band navy">
+        <div className="cs-band navy role-band">
           <div className="cs-wrap">
             <div className="cp-section-head">
-              <div className="cp-label" style={{ color: 'var(--cs-blue)' }}>My Role · Leadership</div>
-              <h3 style={{ color: '#fff' }}>아이디어에서 출시까지, 팀을 이끌었습니다</h3>
+              <div className="cp-label">My Role · Leadership</div>
+              <h3>아이디어에서 출시까지, 팀을 이끌었습니다</h3>
             </div>
             <div className="cp-role-grid">
               <div className="cp-role-card">
@@ -374,13 +392,15 @@ export default function CombinedProjects() {
           <div className="cs-wrap">
             <div className="cp-section-head">
               <div className="cp-label">Screenshots</div>
-              <h3>시스템 화면</h3>
+              <h3>서비스 화면</h3>
             </div>
-            <div className="cp-web-gallery cols-2">
-              <img src={`${PUB}/images/parking2.jpg`} alt="주차 안내 시스템 화면 2" />
-              <img src={`${PUB}/images/parking3.png`} alt="주차 안내 시스템 화면 3" />
-              <img src={`${PUB}/images/parking4.png`} alt="주차 안내 시스템 화면 4" />
-              <img src={`${PUB}/images/parking5.png`} alt="주차 안내 시스템 화면 5" />
+            <div className="cp-gallery" onClick={openLightbox}>
+              <img src={`${PUB}/images/parking1.png`} alt="구역별 주차 현황 지도" />
+              <img src={`${PUB}/images/parking3.png`} alt="무인 파킹 앱 요금 안내" />
+              <img src={`${PUB}/images/parking4.png`} alt="주차 공간 모니터링 웹 대시보드" />
+              <img src={`${PUB}/images/parking5.png`} alt="통계 및 분석 대시보드" />
+              <img src={`${PUB}/images/parking6.png`} alt="관리자 대시보드 메인" />
+              <img src={`${PUB}/images/parking7.png`} alt="IoT 트래픽 모니터링" />
             </div>
           </div>
         </div>
@@ -389,8 +409,8 @@ export default function CombinedProjects() {
         <div className="cs-band navy">
           <div className="cs-wrap">
             <div className="cp-section-head">
-              <div className="cp-label" style={{ color: 'var(--cs-blue)' }}>Crisis &amp; Response</div>
-              <h3 style={{ color: '#fff' }}>4주차, 폭설이 내렸다</h3>
+              <div className="cp-label">Crisis &amp; Response</div>
+              <h3>4주차, 폭설이 내렸다</h3>
             </div>
             <div className="cp-challenge-row">
               <div className="cp-ch-card problem">
@@ -414,31 +434,31 @@ export default function CombinedProjects() {
 
             {/* Awards */}
             <div className="cp-award-row">
-              <div className="cp-award-card" style={{ background: 'rgba(255,255,255,.06)', border: '1px solid rgba(255,255,255,.1)' }}>
+              <div className="cp-award-card">
                 <div className="trophy">🏆</div>
-                <div className="cp-award-title" style={{ color: '#fff' }}>P-학기제 최우수상</div>
-                <div className="cp-award-org" style={{ color: 'rgba(255,255,255,.55)' }}>가천대학교 · 2024.12</div>
+                <div className="cp-award-title">P-학기제 최우수상</div>
+                <div className="cp-award-org">가천대학교 · 2024.12</div>
               </div>
-              <div className="cp-award-card" style={{ background: 'rgba(255,255,255,.06)', border: '1px solid rgba(255,255,255,.1)' }}>
+              <div className="cp-award-card">
                 <div className="trophy">🏆</div>
-                <div className="cp-award-title" style={{ color: '#fff' }}>학생경진대회 우수상</div>
-                <div className="cp-award-org" style={{ color: 'rgba(255,255,255,.55)' }}>가천대학교 · 2025.01</div>
+                <div className="cp-award-title">학생경진대회 우수상</div>
+                <div className="cp-award-org">가천대학교 · 2025.01</div>
               </div>
-              <div className="cp-award-card" style={{ background: 'rgba(255,255,255,.06)', border: '1px solid rgba(255,255,255,.1)' }}>
+              <div className="cp-award-card">
                 <div className="trophy">💡</div>
-                <div className="cp-award-title" style={{ color: '#fff' }}>PM 사이클 체득</div>
-                <div className="cp-award-org" style={{ color: 'rgba(255,255,255,.55)' }}>현장 관찰 → 문제 정의 → 솔루션 → 재기획</div>
+                <div className="cp-award-title">PM 사이클 체득</div>
+                <div className="cp-award-org">현장 관찰 → 문제 정의 → 솔루션 → 재기획</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* My Role */}
-        <div className="cs-band navy">
+        <div className="cs-band navy role-band">
           <div className="cs-wrap">
             <div className="cp-section-head">
-              <div className="cp-label" style={{ color: 'var(--cs-blue)' }}>My Role · PM</div>
-              <h3 style={{ color: '#fff' }}>현장에서 문제를 발견하고, 해결까지 끝까지 책임졌습니다</h3>
+              <div className="cp-label">My Role · PM</div>
+              <h3>현장에서 문제를 발견하고, 해결까지 끝까지 책임졌습니다</h3>
             </div>
             <div className="cp-role-grid">
               <div className="cp-role-card">
@@ -548,12 +568,12 @@ export default function CombinedProjects() {
               <div className="cp-label">Screenshots</div>
               <h3>서비스 화면</h3>
             </div>
-            <div className="cp-gallery">
-              <img src={`${PUB}/images/farm2you.webp`}  alt="Farm2you 메인" />
-              <img src={`${PUB}/images/farm2you2.webp`} alt="Farm2you 화면 2" />
-              <img src={`${PUB}/images/farm2you3.webp`} alt="Farm2you 화면 3" />
-              <img src={`${PUB}/images/farm2you4.webp`} alt="Farm2you 화면 4" />
-              <img src={`${PUB}/images/farm2you5.webp`} alt="Farm2you 화면 5" />
+            <div className="cp-gallery" onClick={openLightbox}>
+              <img src={`${PUB}/images/farm2you.webp`}  alt="메인 화면" />
+              <img src={`${PUB}/images/farm2you1.webp`} alt="상품 상세 화면" />
+              <img src={`${PUB}/images/farm2you2.webp`} alt="농장 리스트 화면" />
+              <img src={`${PUB}/images/farm2you3.webp`} alt="상품 등록 화면" />
+              <img src={`${PUB}/images/farm2you4.webp`} alt="내 농작물 수정·삭제 화면" />
             </div>
           </div>
         </div>
@@ -562,8 +582,8 @@ export default function CombinedProjects() {
         <div className="cs-band navy">
           <div className="cs-wrap">
             <div className="cp-section-head">
-              <div className="cp-label" style={{ color: 'var(--cs-blue)' }}>Solution Bridge</div>
-              <h3 style={{ color: '#fff' }}>양면 시장을 하나로 연결하다</h3>
+              <div className="cp-label">Solution Bridge</div>
+              <h3>양면 시장을 하나로 연결하다</h3>
             </div>
             <div className="cp-bridge-grid">
               <div className="cp-bridge-card">
@@ -586,11 +606,11 @@ export default function CombinedProjects() {
         </div>
 
         {/* My Role */}
-        <div className="cs-band navy">
+        <div className="cs-band navy role-band">
           <div className="cs-wrap">
             <div className="cp-section-head">
-              <div className="cp-label" style={{ color: 'var(--cs-blue)' }}>My Role · Planning Lead</div>
-              <h3 style={{ color: '#fff' }}>아이디어에서 발표까지, 기획의 처음과 끝을 책임졌습니다</h3>
+              <div className="cp-label">My Role · Planning Lead</div>
+              <h3>아이디어에서 발표까지, 기획의 처음과 끝을 책임졌습니다</h3>
             </div>
             <div className="cp-role-grid">
               <div className="cp-role-card">
@@ -675,8 +695,8 @@ export default function CombinedProjects() {
         <div className="cs-band navy">
           <div className="cs-wrap">
             <div className="cp-section-head">
-              <div className="cp-label" style={{ color: 'var(--cs-blue)' }}>What Happened</div>
-              <h3 style={{ color: '#fff' }}>D+2, 예상치 못한 일이 생겼다</h3>
+              <div className="cp-label">What Happened</div>
+              <h3>D+2, 예상치 못한 일이 생겼다</h3>
             </div>
             <div className="cp-timeline">
               <div className="cp-tl-event">
@@ -767,12 +787,15 @@ export default function CombinedProjects() {
               <div className="cp-label">Screenshots</div>
               <h3>앱 화면</h3>
             </div>
-            <div className="cp-gallery">
-              <img src={`${PUB}/images/growme.webp`}  alt="GrowMe 메인" />
-              <img src={`${PUB}/images/growme2.png`}  alt="GrowMe 화면 2" />
-              <img src={`${PUB}/images/growme3.webp`} alt="GrowMe 화면 3" />
-              <img src={`${PUB}/images/growme4.webp`} alt="GrowMe 화면 4" />
-              <img src={`${PUB}/images/growme5.webp`} alt="GrowMe 화면 5" />
+            <div className="cp-gallery" onClick={openLightbox}>
+              <img src={`${PUB}/images/growme.webp`}  alt="메인 화면" />
+              <img src={`${PUB}/images/growme1.webp`} alt="그루와 채팅 화면" />
+              <img src={`${PUB}/images/growme2.webp`} alt="일일 미션 답변 화면" />
+              <img src={`${PUB}/images/growme3.webp`} alt="전문가 상담 연결 화면" />
+              <img src={`${PUB}/images/growme4.webp`} alt="성장 완료 홈 화면" />
+              <img src={`${PUB}/images/growme5.webp`} alt="일일 미션 선택 화면" />
+              <img src={`${PUB}/images/growme6.webp`} alt="일일 미션 답변 화면 2" />
+              <img src={`${PUB}/images/growme7.webp`} alt="커뮤니티 게시글 화면" />
             </div>
           </div>
         </div>
@@ -805,11 +828,11 @@ export default function CombinedProjects() {
         </div>
 
         {/* My Role */}
-        <div className="cs-band navy">
+        <div className="cs-band navy role-band">
           <div className="cs-wrap">
             <div className="cp-section-head">
-              <div className="cp-label" style={{ color: 'var(--cs-blue)' }}>My Role · Adaptability</div>
-              <h3 style={{ color: '#fff' }}>계획 밖의 역할까지 맡아, 끝까지 책임졌습니다</h3>
+              <div className="cp-label">My Role · Adaptability</div>
+              <h3>계획 밖의 역할까지 맡아, 끝까지 책임졌습니다</h3>
             </div>
             <div className="cp-role-grid">
               <div className="cp-role-card">
@@ -831,6 +854,26 @@ export default function CombinedProjects() {
           </div>
         </div>
       </section>
+
+      {lightbox && (
+        <div className="cp-lightbox" onClick={() => setLightbox(null)}>
+          <button
+            className="cp-lightbox-close"
+            onClick={() => setLightbox(null)}
+            aria-label="닫기"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+          <img
+            src={lightbox.src}
+            alt={lightbox.alt}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
 
     </div>
   );

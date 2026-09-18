@@ -48,7 +48,7 @@ export default function CaseStudyICatch() {
           </div>
 
           <div className="cs-hero-img portrait">
-            <img src={process.env.PUBLIC_URL + '/images/icatch.webp'} alt="iCatch 앱 메인 화면" />
+            <img src={process.env.PUBLIC_URL + '/images/icatch1.webp'} alt="iCatch 앱 메인 화면" />
           </div>
         </div>
       </section>
@@ -297,7 +297,7 @@ export default function CaseStudyICatch() {
 
           <div className="cs-frow">
             <div className="cs-fimg">
-              <img src={process.env.PUBLIC_URL + '/images/icatch3.webp'} alt="AI 이상감지 알림 화면" />
+              <img src={process.env.PUBLIC_URL + '/images/icatch7.webp'} alt="AI 이상감지 알림 화면" />
             </div>
             <div>
               <div className="cs-fn">F.02</div>
@@ -316,6 +316,7 @@ export default function CaseStudyICatch() {
               <p>시설 관리자는 웹에서 전체 기기 현황·이상감지 이력·IoT 응답시간을 한눈에 확인합니다. 순찰 공백 없이 다수를 동시에 관리할 수 있습니다.</p>
             </div>
           </div>
+
 
           <div className="cs-frow">
             <div className="cs-fimg">

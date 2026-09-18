@@ -59,18 +59,44 @@
   font-weight: 700;
 }
 
+/* ── Secondary bands go light — only the project header
+   (.cp-proj-hd) stays dark. Everything else (Admin Web,
+   Crisis & Response, Solution Bridge, Crisis Timeline, My Role)
+   switches to a light surface so the page isn't dominated by
+   heavy dark blocks. ─────────────────────────────────────────── */
+.cp-project .cs-band.navy {
+  background: var(--cs-blue-50);
+  color: var(--cs-ink);
+}
+
+/* the closing "My Role" band gets its own distinct light tone so it
+   never sits flush against another band of the exact same color
+   (e.g. when it directly follows a .cs-band.navy section above) */
+.cp-project .cs-band.navy.role-band {
+  background: #ffffff;
+}
+
+.cp-project .cs-band.navy h2,
+.cp-project .cs-band.navy h3,
+.cp-project .cs-band.navy h4 {
+  color: var(--cs-navy-900);
+}
+
 /* ── Project Section ──────────────────────────────────────────── */
+/* thick light-colored gap (not just a hairline) so a project's closing
+   navy band doesn't visually run into the next project's navy header */
 .cp-project {
-  border-top: 4px solid var(--cs-line);
+  border-top: 32px solid var(--cs-surface);
   scroll-margin-top: 140px;
 }
 
 .cp-project:first-of-type { border-top: none; }
 
-/* ── Project Header (dark band) ───────────────────────────────── */
+/* ── Project Header (dark band, toned down — the only dark band
+   left in each project) ──────────────────────────────────────── */
 .cp-proj-hd {
   padding: 64px 0 52px;
-  background: var(--cs-navy);
+  background: #232a36;
   color: #fff;
 }
 
@@ -348,8 +374,8 @@
 }
 
 .cp-admin-feat {
-  background: rgba(255, 255, 255, .06);
-  border: 1px solid rgba(255, 255, 255, .1);
+  background: #ffffff;
+  border: 1px solid var(--cs-line);
   border-radius: 16px;
   padding: 28px;
 }
@@ -359,12 +385,12 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: .2em;
-  color: var(--cs-blue);
+  color: var(--cs-blue-mid);
   margin-bottom: 14px;
 }
 
 .cp-admin-feat h4 {
-  color: #fff;
+  color: var(--cs-navy-900);
   font-size: 17px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -372,7 +398,7 @@
 
 .cp-admin-feat p {
   font-size: 14px;
-  color: rgba(255, 255, 255, .65);
+  color: var(--cs-muted);
   line-height: 1.65;
 }
 
@@ -392,6 +418,7 @@
   border-radius: 12px;
   box-shadow: var(--cs-sh-md);
   display: block;
+  cursor: zoom-in;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -413,8 +440,8 @@
 }
 
 .cp-role-card {
-  background: rgba(255, 255, 255, .06);
-  border: 1px solid rgba(255, 255, 255, .1);
+  background: #ffffff;
+  border: 1px solid var(--cs-line);
   border-radius: 16px;
   padding: 28px;
 }
@@ -424,12 +451,12 @@
   font-size: 12px;
   font-weight: 600;
   letter-spacing: .15em;
-  color: var(--cs-blue);
+  color: var(--cs-blue-mid);
   margin-bottom: 12px;
 }
 
 .cp-role-card h4 {
-  color: #fff;
+  color: var(--cs-navy-900);
   font-size: 17px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -437,7 +464,7 @@
 
 .cp-role-card p {
   font-size: 14px;
-  color: rgba(255, 255, 255, .65);
+  color: var(--cs-muted);
   line-height: 1.65;
 }
 
@@ -491,14 +518,14 @@
 }
 
 .cp-ch-card {
-  background: rgba(255, 255, 255, .06);
-  border: 1px solid rgba(255, 255, 255, .1);
+  background: #ffffff;
+  border: 1px solid var(--cs-line);
   border-radius: 16px;
   padding: 28px;
 }
 
-.cp-ch-card.problem { border-color: rgba(239,68,68,.3); }
-.cp-ch-card.result  { border-color: rgba(74,222,128,.3); }
+.cp-ch-card.problem { border-color: #fecaca; }
+.cp-ch-card.result  { border-color: #bbf7d0; }
 
 .cp-ch-label {
   font-family: var(--cs-en);
@@ -509,18 +536,18 @@
   margin-bottom: 10px;
 }
 
-.cp-ch-card.problem .cp-ch-label { color: #fca5a5; }
-.cp-ch-card.action  .cp-ch-label { color: var(--cs-blue); }
-.cp-ch-card.result  .cp-ch-label { color: #4ade80; }
+.cp-ch-card.problem .cp-ch-label { color: #dc2626; }
+.cp-ch-card.action  .cp-ch-label { color: var(--cs-blue-mid); }
+.cp-ch-card.result  .cp-ch-label { color: var(--cs-green-600); }
 
-.cp-ch-card h4 { color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-.cp-ch-card p  { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.65; }
+.cp-ch-card h4 { color: var(--cs-navy-900); font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.cp-ch-card p  { font-size: 14px; color: var(--cs-muted); line-height: 1.65; }
 
 .cp-ch-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,.3);
+  color: var(--cs-faint);
   font-size: 20px;
   margin-top: 32px;
 }
@@ -593,8 +620,8 @@
 }
 
 .cp-bridge-card {
-  background: rgba(255, 255, 255, .06);
-  border: 1px solid rgba(255, 255, 255, .12);
+  background: #ffffff;
+  border: 1px solid var(--cs-line);
   border-radius: 16px;
   padding: 28px;
 }
@@ -604,12 +631,12 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: .2em;
-  color: var(--cs-blue);
+  color: var(--cs-blue-mid);
   margin-bottom: 14px;
 }
 
-.cp-bridge-card h4 { color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 10px; }
-.cp-bridge-card p  { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.65; }
+.cp-bridge-card h4 { color: var(--cs-navy-900); font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+.cp-bridge-card p  { font-size: 14px; color: var(--cs-muted); line-height: 1.65; }
 
 /* ── Crisis Timeline (growme, on navy) ───────────────────────── */
 .cp-timeline { padding-bottom: 56px; }
@@ -627,12 +654,12 @@
   font-family: var(--cs-en);
   font-size: 13px;
   font-weight: 700;
-  color: rgba(255,255,255,.4);
+  color: var(--cs-faint);
   text-align: right;
   padding-top: 3px;
 }
 
-.cp-tl-day.crisis { color: #f87171; }
+.cp-tl-day.crisis { color: #dc2626; }
 
 .cp-tl-line {
   display: flex;
@@ -644,19 +671,19 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: rgba(255,255,255,.25);
+  background: var(--cs-line);
   flex-shrink: 0;
   margin-top: 3px;
 }
 
-.cp-tl-dot.crisis  { background: #f87171; }
-.cp-tl-dot.action  { background: var(--cs-blue); }
-.cp-tl-dot.success { background: #4ade80; }
+.cp-tl-dot.crisis  { background: #dc2626; }
+.cp-tl-dot.action  { background: var(--cs-blue-mid); }
+.cp-tl-dot.success { background: var(--cs-green-600); }
 
 .cp-tl-connector {
   flex: 1;
   width: 1px;
-  background: rgba(255,255,255,.1);
+  background: var(--cs-line);
   margin: 4px 0;
 }
 
@@ -664,8 +691,8 @@
 
 .cp-tl-body { padding-bottom: 20px; }
 
-.cp-tl-body h4 { color: #fff; font-size: 17px; font-weight: 700; margin-bottom: 6px; }
-.cp-tl-body p  { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.65; }
+.cp-tl-body h4 { color: var(--cs-navy-900); font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+.cp-tl-body p  { font-size: 14px; color: var(--cs-muted); line-height: 1.65; }
 
 /* ── Reflection Cards (growme) ───────────────────────────────── */
 .cp-reflection-grid {
@@ -686,6 +713,55 @@
 
 .cp-reflection-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--cs-navy-900); }
 .cp-reflection-card p  { font-size: 14px; color: var(--cs-muted); line-height: 1.65; }
+
+/* ── Lightbox (click a web dashboard screenshot to enlarge) ─── */
+.cp-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  cursor: zoom-out;
+  animation: cp-lightbox-fade 0.15s ease;
+}
+
+@keyframes cp-lightbox-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.cp-lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
+.cp-lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cp-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
 
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 900px) {

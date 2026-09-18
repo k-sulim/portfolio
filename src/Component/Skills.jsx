@@ -203,7 +203,7 @@ export default function Skills() {
             <p>
               구름톤 유니브 기획 파트에서 서비스 기획서, Figma 프로토타입, API 명세서 작성을 직접 경험했습니다.
               SQL과 Python(pandas, matplotlib)을 활용한 데이터 분석 역량을 키우고 있으며,
-              ADSP 자격증을 준비 중입니다.
+              ADSP 자격증 취득함.
             </p>
           </div>
 

@@ -149,6 +149,13 @@ main {
   background: var(--bg);
 }
 
+/* project tab bar should sit flush under the fixed nav, no gap */
+.section-projects {
+  padding-top: 0;
+  border-top: none;
+  scroll-margin-top: 88px;
+}
+
 /* ============================================
    Navigation — floating pill
    ============================================ */
@@ -2168,6 +2175,10 @@ footer {
   .page-section {
     scroll-margin-top: 88px;
     padding: var(--space-2xl) 0;
+  }
+
+  .section-projects {
+    padding-top: 0;
   }
 
   .container { padding: var(--space-2xl) var(--space-md); }
